@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帖子列表</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__daterangepicker-bs3.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+    <style>
+        .fasong{margin-top: 20px}
+    </style>
+</head>
+<body>
+{php}
+  $card_status=config('card_status');
+  $card_type=config('card_type');
+{/php}
+<div class="skin-black">
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div>
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">帖子列表</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <span class="panel-title">
+                             筛选
+                         </span>
+                        <span class="panel-remove">
+                             <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;清空</a>
+                         </span>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="panel-body copy-list-input">
+
+                        <form action="{:url('/admin/card/search')}" enctype="multipart/form-data" method="post" role="form">
+
+                            <div class="search-item col-md-3 col-sm-6" style="padding-left: 0">
+                                <span>ID</span>
+                                <input type="text" class="form-control" name="id">
+                            </div>
+
+                            <div class="search-item col-md-3 col-sm-6" style="padding-left: 0">
+                                <span>分类</span>
+                                <select  class="form-control" name="fenlei">
+                                    <option value="">请选择</option>
+                                    <option value="1">{$card_type['1']}</option>
+                                    <option value="2">{$card_type['2']}</option>
+                                </select>
+                            </div>
+
+                            <!--<div class="form-group  col-md-3 col-sm-6" style="padding-left: 0">-->
+                                <!--<label for="dtp_input1" class="col-md-12 control-label" style="">起止时间</label>-->
+                                <!--<div class="input-group date form_date col-md-12" data-date=""-->
+                                     <!--data-date-format="yyyy-mm-dd H:m:s" data-link-field="dtp_input2"-->
+                                     <!--data-link-format="yyyy-mm-dd H:m:s">-->
+                                    <!--<input class="form-control" size="16" type="text" name="start_time" value="" readonly>-->
+                                    <!--<span class="input-group-addon"><span-->
+                                            <!--class="glyphicon glyphicon-calendar"></span></span>-->
+                                <!--</div>-->
+                                <!--<input type="hidden" id="dtp_input1" value=""/>-->
+                            <!--</div>-->
+
+                            <div class="form-group col-md-3 col-sm-6 " style="padding-left: 0">
+                                <label>编辑时间</label>
+                                <div class="controls">
+                                    <div class="input-prepend input-group">
+                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                        <input type="text" readonly  name="times" id="reservation" class="form-control"  />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="search-item col-md-3 col-sm-6" style="padding-left: 0">
+                                <span>状态</span>
+                                <select  class="form-control" name="status">
+                                    <option value="">请选择</option>
+                                    <option value="0">{$card_status['0']}</option>
+                                    <option value="1">{$card_status['1']}</option>
+                                    <option value="2">{$card_status['2']}</option>
+                                </select>
+                            </div>
+
+
+                            <div class="search-btn col-md-12">
+                                <button type="submit" class="btn btn-default">搜索</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="panel table-list">
+
+                    <div class="panel-heading">
+                <span class="panel-title">
+                             帖子列表
+                </span>
+                        <span class="panel-remove">
+                             <a href="{:url('/admin/card/addCard')}"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;添加</a>
+                </span>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <div class="panel-body table-responsive">
+
+
+                        <table class="table table-hover  copy-table">
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" id="quanxuan" style="width: 17px ; height: 17px;"></th>
+                                <th>ID</th>
+                                <th>图片</th>
+                                <th>编辑时间</th>
+                                <th>分类</th>
+                                <!--<th>文案</th>-->
+                                <th>发布时间</th>
+                                <th>发布次数</th>
+                                <th>操作</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                {foreach $cardinfo as $ov}
+                                <td><input type="checkbox" class="qx checkbox" name="checkbox" value="{$ov.id}"  style="width: 15px ; height: 15px;"/></td>
+                                <td>{$ov.id}</td>
+                                <td class="copy-shop-img"><img src="{$ov.images_url}" alt="{$ov.url}" title="{:htmlspecialchars_decode($ov.content)}"></td>
+                                <td>{$ov.create_time}</td>
+                                <td>{switch name="$ov.type"}
+                                        {case value="1"}{$card_type['1']}{/case}
+                                        {case value="2"}{$card_type['2']}{/case}
+                                    {/switch}
+                                </td>
+                                <!--<td>{:htmlspecialchars_decode($ov.content)}</td>-->
+                                <td>{$ov.send_time}</td>
+                                <td>{$ov.send_times}</td>
+                                <td>
+                                    <a href="cardEdit?id={$ov.id}" class="btn btn-primary">
+                                        编辑
+                                    </a>
+                                    {switch name="$ov.status"}
+                                    {case	value="0"}<a href="sendCard?id={$ov.id}" type="button" class="btn btn-danger">{$card_status['0']}</a>{/case}
+                                    {case	value="1"}<a href="resCard?id={$ov.id}" type="button" class="btn btn-success">{$card_status['1']}</a>{/case}
+                                    {case	value="2"}<a type="button" class="btn btn-warning">{$card_status['2']}</a>{/case}
+                                    {/switch}
+                                </td>
+                            </tr>
+                            {/foreach}
+                            </tbody>
+                        </table>
+                        <div class="fasong">
+                             <a class="label label-success" id="send" >启用</a>
+                             <a class="label label-success" id="xiajia" >下架</a>
+                        </div>
+                        <div>
+                            <ul class="pagination pagination-sm pull-right" style="height: 30px;">
+                                {$cardinfo->render()}
+                            </ul>
+                            <div style="clear: both"></div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__ADMIN_JS_PATH__/moment.min.js"></script>
+<script src="__ADMIN_JS_PATH__/daterangepicker.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>
+
+<!--日期-->
+<link href="__BOOTSTRAP__css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="__BOOTSTRAP__js/bootstrap-datetimepicker.min.js"></script>
+<script src="__BOOTSTRAP__js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$('.form_date').datetimepicker({-->
+            <!--language: 'zh-CN',-->
+            <!--weekStart: 1,-->
+            <!--todayBtn: 1,-->
+            <!--autoclose: 1,-->
+            <!--todayHighlight: 1,-->
+            <!--startView: 2,-->
+            <!--minView: 2,-->
+            <!--forceParse: 0,-->
+            <!--format:'yyyy-mm-dd',-->
+            <!--pickerPosition:'bottom-left'-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#reservation').daterangepicker({
+            language: 'zh-CN',
+            format: 'YYYY/MM/DD'
+        }, function(start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+        });
+    });
+</script>

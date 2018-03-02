@@ -1,0 +1,264 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('font/Lato-Regular.eot');
+    src: url('font/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+    url('font/Lato-Regular.woff') format('woff'),
+    url('font/Lato-Regular.ttf') format('truetype')
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Lato,Helvetica;
+}
+
+/*用户列表页*/
+.user-order-list .order-list-status{
+    display: inline-block;
+    width: 77px;
+    height: 26px;
+    line-height: 26px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+.status-type-unpay{
+    background-color:#e9ba2c;
+}
+.status-type-pay{
+    background-color:#159186;
+}
+.status-type-process{
+    background-color:#0f9aad;
+}
+.status-type-shipping{
+    background-color:#33ae44;
+}
+.status-type-complete{
+    background-color:#2072bb;
+}
+.status-type-refund{
+    background-color:#cd251a;
+}
+.status-type-partrefund{
+    background-color:#e27c18;
+}
+.status-type-cancel{
+    background-color:#c4c4c4;
+}
+
+
+/*用户中心-弹出框*/
+#user-Modal{
+    top: 10% !important;
+}
+#user-Modal .modal-dialog{
+    width: 600px;
+}
+#user-Modal .modal-content{
+    padding: 20px;
+}
+#user-Modal .modal-header{
+    padding-top: 0px;
+    background-color: white !important;
+    text-align: center;
+    border-bottom: 2px solid #e5e5e5;
+}
+#user-Modal .modal-header i{
+    font-size: 23px;
+}
+#user-Modal .modal-header span{
+    font-size: 23px;
+    display: inline-block;
+    margin-left: 5px;
+}
+#user-Modal .modal-body{
+    padding: 0px;
+}
+#user-Modal .user-info{
+    padding: 15px;
+    border-bottom: 2px solid #e5e5e5;
+}
+#user-Modal .form-group{
+    margin: 15px 0!important;
+}
+#user-Modal .form-group input{
+    height: 27px;
+    padding: 2px;
+}
+#user-Modal .form-horizontal{
+    border-bottom: 2px dashed #e5e5e5;
+}
+
+#user-Modal .form-horizontal .control-label{
+    padding-top: 3px !important;
+    font-weight: normal !important;
+}
+#user-Modal .modal-footer{
+    padding: 20px 0!important;
+    background-color: #f9fafc!important;
+    text-align: right;
+    color: white;
+}
+#user-Modal .modal-footer button{
+    height: 30px;
+}
+#user-Modal .modal-footer button:hover{
+    color: white;
+}
+#user-Modal .modal-footer .btn-save{
+    background-color: #1e76cd;
+}
+#user-Modal .modal-footer .btn-close{
+    background-color: #c3c3c3;
+}
+
+
+
+
+
+.user-post .details{
+    display: inline-block;
+    width: 65px;
+    height: 27px;
+    line-height: 27px;
+    margin: 0 5px;
+    background-color: #1c77c8;
+    color: white;
+    text-align: center;
+}
+.user-post .send{
+    display: inline-block;
+    width: 53px;
+    height: 27px;
+    line-height: 27px;
+    background-color: #32af47;
+    margin: 0 5px;
+    color: white;
+    text-align: center;
+}
+
+
+
+#sendModal .modal-dialog{
+    width: 600px!important;
+}
+#sendModal .modal-content{
+    padding: 20px;
+}
+#sendModal .modal-header{
+    background-color: white!important;
+    font-size: 30px;
+    padding: 0!important;
+    padding-bottom: 20px!important;
+    color: #e5e5e5;
+    border-bottom: 2px solid #e5e5e5;
+}
+#sendModal .page-select{
+    margin: 30px auto;
+    text-align: center;
+}
+#sendModal .page-select select{
+    height: 27px;
+    padding: 2px 0!important;
+}
+#sendModal .page-select label{
+    padding-right:0;
+    padding-top: 4px;
+    font-weight: normal;
+}
+#sendModal .set-time{
+    padding: 30px 90px;
+    border-top: 2px dashed #e5e5e5;
+    border-bottom: 2px dashed #e5e5e5;
+}
+#sendModal .set-time .checkbox{
+    margin: 5px 0;
+}
+.set-time-text{
+    line-height: 20px;
+    color: #969896;
+    margin-bottom: 5px;
+}
+#sendModal .form-control{
+    background-color: white!important;
+    padding: 2px !important;
+    height: 27px;
+}
+#sendModal .form_date .input-group-addon{
+    background-color: white !important;
+    color: #3e5895;
+    border-radius: 0!important;
+    height: 27px;
+    padding: 2px 6px;
+}
+#sendModal .no-right-border{
+    border-right: 0 !important;
+}
+#sendModal  .input-group-addon{
+
+}
+#sendModal  .time-utc{
+    display: inline-block;
+    padding-top: 7px;
+}
+
+#sendModal .modal-footer{
+    padding: 20px 0!important;
+    background-color: #f9fafc !important;
+    text-align: right !important;
+}
+#sendModal .modal-footer button{
+    width:90px;
+    height: 30px;
+    color: white;
+    outline: none;
+}
+#sendModal .modal-footer .Schedule{
+    background-color: #35ad53;
+}
+#sendModal .modal-footer .Confirm{
+    background-color: #1e76cd;
+}
+
+
+
+/*帖子详情页*/
+.post-show{
+    padding-bottom: 30px;
+}
+.post-contents{
+    width: 352px;
+    font-size: 13px;
+}
+.post-contents .post-link li{
+    margin: 8px 0;
+}
+.post-contents .post-link-item{
+    color: #195086;
+}
+.post-contents .post-img{
+    border: 2px solid #d1d1d1;
+    padding: 5px;
+    margin-top:16px;
+}
+.post-contents .post-img img{
+    width: 338px;
+}
+.post-contents .post-send{
+    margin-top: 16px;
+}
+.post-contents .post-send .post-send-num{
+    display: block;
+    color:#d1d1d1 ;
+}
+.post-contents .post-send .post-send-btn{
+    display: block;
+    float: right;
+    width: 72px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    background-color: #52c663;
+}

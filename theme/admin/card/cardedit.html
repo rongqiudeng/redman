@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加帖子</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+    <style>
+        .plus {
+            float: left
+        }
+
+        .glyphicon-info-sign {
+            padding-top: 8px;
+            color: rgb(255, 0, 0);
+            font-size: 13px;
+        }
+
+        .glyphicon-info-sign:hover {
+            cursor: pointer;
+            color: rgb(255, 77, 90);
+        }
+        .card-box .panel-title{
+            padding-bottom: 10px;
+        }
+        .card-box .panel-heading{
+            padding: 0px;
+            padding-bottom: 15px;
+        }
+        .up-copy-bt button{
+            padding: 6px 25px;
+            margin-right: 20px;
+        }
+        #more-url input{
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="skin-black">
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div >
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">帖子列表</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <span class="panel-title">
+                             编辑
+                         </span>
+                        <span class="panel-remove">
+                             <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;清空</a>
+                         </span>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="panel-body card-box">
+                        <form action="{:url('/admin/card/saveCard')}" method="post" enctype="multipart/form-data">
+
+                            <div class="panel-heading col-md-10 col-sm-12">
+                                <span class="panel-title"> 原始URL： </span>
+                                <div style="clear:both"></div>
+                                <input type="hidden" name="id" id="url-id" value="">
+                                <input type="hidden" name="status" id="status" value="">
+
+                                <div id="more-url">
+
+                                </div>
+
+                                <!--<input type="text" class="form-control " value="" name="url">-->
+
+                                <div class="plus"><span class="	glyphicon glyphicon-info-sign">每条完整的url以@符号分隔开</span></div>
+
+                            </div>
+
+
+                            <div style="clear:both"></div>
+                            <div class="panel-heading">
+                                <span class="panel-title"> 图片： </span>
+                                <div style="clear:both"></div>
+                                <input type="file" class="" id="inputfile" name="file" onchange="PreviewImage(this)">
+                                <div style="clear:both"></div>
+                            </div>
+
+
+                            <div class="panel-heading">
+                                <span class="panel-title"> 原图片预览：</span>
+                                <div style="clear:both"></div>
+                                <div id="imgPreview">
+                                    <img id="img1" src="" class="img-rounded" alt="" width="100" height="100"/>
+                                </div>
+                            </div>
+
+                            <div style="clear: both"></div>
+                            <div class="panel-heading col-md-10 col-sm-12">
+                                <div style="clear:both"></div>
+                                <span class="panel-title">文案：</span>
+                                <div style="clear:both"></div>
+
+                                <!--text edit-->
+                                <textarea class="form-control" rows="8" name="content" id="post-content">
+
+                                </textarea>
+
+                            </div>
+
+
+                            <div class="col-md-10 col-sm-12 up-copy-bt pull-left">
+                                <button type="submit" class="btn btn-primary">发布</button>
+                                <a  onclick="javascript:history.go(-1)" class="btn btn-primary">返回</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>
+<script>
+    var postId=location.search.split("=")[1];
+    console.log(postId);
+    var postUrl=[];
+    var urlList='';
+    $.ajax({
+        url:"{:url('/admin/card/editApi')}",
+        data:{id:postId},
+        type:'post',
+        dataType: 'json',
+        success:function (result) {
+            postUrl=result.url.split("@");
+            for(var i=0;i<postUrl.length;i++){
+                urlList=urlList+'<input type="text" class="form-control " value='+ postUrl[i]+'  name="url[]">';
+            }
+            $('#more-url').html(urlList);
+            $('#url-id').val(result.id);
+            $('#status').val(result.status);
+            $('#img1').attr('src',result.images_url);
+            $('#post-content').text(result.content);
+
+        }
+    });
+    function PreviewImage(imgFile)
+    {
+        var filextension=imgFile.value.substring(imgFile.value.lastIndexOf("."),imgFile.value.length);
+        filextension=filextension.toLowerCase();
+        if ((filextension!='.jpg')&&(filextension!='.gif')&&(filextension!='.jpeg')&&(filextension!='.png')&&(filextension!='.bmp'))
+        {
+            alert("对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !");
+            imgFile.focus();
+        }
+        else
+        {
+            var path;
+            if(document.all)//IE
+            {
+                imgFile.select();
+                path = document.selection.createRange().text;
+                document.getElementById("imgPreview").innerHTML="";
+                document.getElementById("imgPreview").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\"" + path + "\")";//使用滤镜效果
+            }
+            else//FF
+            {
+                path=window.URL.createObjectURL(imgFile.files[0]);// FF 7.0以上
+                //path = imgFile.files[0].getAsDataURL();// FF 3.0
+                document.getElementById("imgPreview").innerHTML = "<img id='img1'  class='img-rounded' alt='' width='100px' height='100px' src='"+path+"'/>";
+                //document.getElementById("img1").src = path;
+            }
+        }
+    }
+</script>

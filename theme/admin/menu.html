@@ -1,0 +1,54 @@
+<div class="left-side">
+    <div class="user-content">
+        <div class="img">
+            <a href="/admin/admin/personal"><img src="__ADMIN_IMAGES_PATH__user.jpg" alt=""></a>
+        </div>
+        <div class="use-name">
+            <span></span><span>{php} echo getUserId(); {/php}</span>
+        </div>
+        <span class="user-type">
+            {php}
+                $roleId = getStaffRoleId();
+                $admin_role=config("admin_role");
+                switch($roleId){
+                    case 0:
+                            echo $admin_role['0'];
+                            break;
+                    case 1:
+                            echo $admin_role['1'];
+                            break;
+                    case 2:
+                            echo $admin_role['2'];
+                            break;
+                    case 3:
+                            echo $admin_role['3'];
+                            break;
+                    case 4:
+                            echo $admin_role['4'];
+                            break;
+                    case 5:
+                            echo $admin_role['5'];
+                            break;
+                }
+            {/php}
+        </span>
+    </div>
+    <div class="left-nav">
+        <ul>
+            <li><a href="{:url('/admin/page/index')}" <?php if(\think\Request::instance()->controller() == 'Page' )echo 'style="background-color: #1e2324"';?> >
+                <label <?php if(\think\Request::instance()->controller() == 'Page' )echo 'style="display: block"';?>></label><span class="nav-first"><i class="icon iconfont icon-page1"></i></span><span class="nav-last ">PAGE</span></a></li>
+            <li><a href="{:url('/admin/goods/index')}" <?php if(\think\Request::instance()->controller() == 'Goods' )echo 'style="background-color: #1e2324"';?>>
+                <label <?php if(\think\Request::instance()->controller() == 'Goods' )echo 'style="display: block"';?>></label><span class="nav-first "><i class="icon iconfont icon-chazhaobiaodanliebiao"></i></span><span class="nav-last">订单列表</span></a></li>
+            <li><a href="{:url('/admin/card/index')}" <?php if(\think\Request::instance()->controller() == 'Card' )echo 'style="background-color: #1e2324"';?> >
+                <label <?php if(\think\Request::instance()->controller() == 'Card' )echo 'style="display: block"';?>></label><span class="nav-first"><i class="icon iconfont icon-liebiao5"></i></span><span class="nav-last">帖子列表</span></a></li>
+            <li><a href="{:url('/admin/product/productList')}" <?php if(\think\Request::instance()->controller() == 'Product')echo 'style="background-color: #1e2324"';?> >
+                <label <?php if(\think\Request::instance()->controller() == 'Product' )echo 'style="display: block"';?>></label><span class="nav-first"><i class="icon iconfont icon-chazhaobiaodanliebiao"></i></span><span class="nav-last">商品列表</span></a></li>
+            <li><a href="{:url('/admin/account/index')}" <?php if(\think\Request::instance()->controller() == 'Account' )echo 'style="background-color: #1e2324"';?>>
+                <label <?php if(\think\Request::instance()->controller() == 'Account' )echo 'style="display: block"';?>></label><span class="nav-first"><i class="icon iconfont icon-zhanghuguanli2"></i></span><span class="nav-last">账户管理</span></a></li>
+            <li><a href="{:url('/admin/menu/index')}" <?php if(\think\Request::instance()->controller() == 'Menu' )echo 'style="background-color: #1e2324"';?>>
+                <label <?php if(\think\Request::instance()->controller() == 'Menu' )echo 'style="display: block"';?>></label><span class="nav-first"><i class="icon iconfont icon-shuxingliebiaoxiangqing"></i></span><span class="nav-last">属性列表</span></a></li>
+            <li><a href="{:url('/admin/admin/index')}" <?php if(\think\Request::instance()->controller() == 'Admin' )echo 'style="background-color: #1e2324"';?>>
+                <label <?php if(\think\Request::instance()->controller() == 'Admin' )echo 'style="display: block"';?>></label><span class="nav-first"><i class="icon iconfont icon-yonghuzhongxin"></i></span><span class="nav-last ">管理员列表</span></a></li>
+        </ul>
+    </div>
+</div>

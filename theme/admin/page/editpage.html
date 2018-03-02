@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑PAGE</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__details.css">
+
+
+</head>
+<body>
+
+
+<div class="skin-black">
+
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div>
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">PAGE</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="bg-img">
+
+                        <div class="bg-icon">
+                            <img src="__ADMIN_IMAGES_PATH__touxiang.jpg" alt="">
+                        </div>
+
+                        <div class="bg-id">
+                            <label></label>
+                            <span class="bg-user-id"> USER ID <span>{$pageInfo.user_id}</span>   </span>
+                            <span class="bg-page-id">PAGE ID <span> {$pageInfo.page_id}</span></span>
+                        </div>
+                    </div>
+                </div>
+                <form method="post" action="{:url('/admin/page/savePageList')}" enctype="multipart/form-data">
+                <div class="panel panel-default" style="margin-top:40px;">
+                    <div class="panel-body">
+                        <span class="panel-title" style="padding: 6px 0">编辑</span>
+                        <span class="panel-remove"><button type="submit" class="btn btn-default  page-details-btn">确定</button></span>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+                <input type="hidden" name="id" value="{$pageInfo.id}">
+                <div class="details-box">
+                    <div class="col-md-4 col-sm-6 details-list">
+                        <div class="panel-body details-item">
+
+                            <div class="col-md-4 details-icon">
+                                <i class="icon iconfont icon-icon-test" style="color:#63a35c;"></i>
+                            </div>
+
+                            <div class="col-md-8 details-text">
+                                <span>PAGE 类型</span>
+                                <select name="pagetype" class="form-control m-b-10">
+                                    {foreach $pagetype as $vo}
+                                    <option value="{$vo.name}">{$vo.name}</option>
+                                    {/foreach}
+                                    <option value="{$pageInfo.page_type}" selected="selected">{$pageInfo.page_type}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 details-list">
+                        <div class="panel-body details-item">
+
+                            <div class="col-md-4 details-icon">
+                                <i class="icon iconfont icon-fensi1" style="color: orange"></i>
+                            </div>
+
+                            <div class="col-md-8 details-text">
+                                <span>粉丝数量</span>
+                                <select name="fans" class="form-control m-b-10">
+                                    {foreach $fans as $vo}
+                                    <option value="{$vo.status}">{$vo.status}</option>
+                                    {/foreach}
+                                    <option value="{$pageInfo.fans}" selected="selected">{$pageInfo.fans}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 details-list">
+                        <div class="panel-body details-item">
+
+                            <div class="col-md-4 details-icon">
+                                <i class="icon iconfont icon-weibiaoti-" style="color: #00b3ee"></i>
+                            </div>
+
+                            <div class="col-md-8 details-text">
+                                <span>PAGE活跃度</span>
+                                <select name="huoyuedu" class="form-control m-b-10">
+                                    {foreach $pageactivity as $vo}
+                                    <option value="{$vo.status}">{$vo.value}</option>
+                                    {/foreach}
+                                    <option value="{$pageInfo.page_activity}" selected="selected">{$pageInfo.page_activity_status}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 details-list">
+                        <div class="panel-body details-item">
+
+                            <div class="col-md-4 details-icon">
+                                <i class="icon iconfont icon-bili" style="color:red;"></i>
+                            </div>
+
+                            <div class="col-md-8 details-text">
+                                <span>佣金比</span>
+                                <select name="yongjin" class="form-control m-b-10">
+                                    {foreach $yongjin as $vo}
+                                    <option value="{$vo.status}">{$vo.status}</option>
+                                    {/foreach}
+                                    <option value="{$pageInfo.commission}" selected="selected">{$pageInfo.commission}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 details-list">
+                        <div class="panel-body details-item">
+
+                            <div class="col-md-4 details-icon">
+                                <i class="icon iconfont icon-yunxingzhuangtair" style="color:#3e8f3e;"></i>
+                            </div>
+
+                            <div class="col-md-8 details-text">
+                                <span>状态</span>
+                                <select name="status"class="form-control m-b-10">
+                                    <{foreach $stutus as $vo}
+                                    <option value="{$vo.status}">{$vo.value}</option>
+                                    {/foreach}
+                                    <option value="{$pageInfo.status}" selected="selected">{$pageInfo.status_value}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 details-list">
+                        <div class="panel-body details-item">
+
+                            <div class="col-md-4 details-icon">
+                                <i class="icon iconfont icon-beizhu" style="color: #416cb4;"></i>
+                            </div>
+
+                            <div class="col-md-8 details-text">
+                                <span>备注</span>
+                                <input type="text" class="form-control" name="beizhu" value="{$pageInfo.beizhu}">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="clear: both"></div>
+
+                </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>

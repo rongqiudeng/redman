@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAGE列表</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+</head>
+<body>
+<div  class="skin-black" >
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div >
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">PAGE</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <span class="panel-title">
+                             筛选
+                         </span>
+                        <span class="panel-remove">
+                             <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;清空</a>
+                         </span>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="panel-body">
+
+                        <form action="{:url('/admin/page/search')}" enctype="multipart/form-data" name="mainform" method="post">
+
+                            <div class="search-item col-md-3 col-sm-6" >
+                                <span>USER ID</span>
+                                <input type="text" name="userid" class="form-control">
+                            </div>
+                            <div class="search-item col-md-3 col-sm-6">
+                                <span>PAGE ID</span>
+                                <input type="text" name="pageid" class="form-control">
+                            </div>
+                            <div class="search-item col-md-3 col-sm-6">
+                                <span>PAGE 类型</span>
+                                <select name="pagetypes"  class="form-control m-b-10">
+                                    <option value="">请选择</option>
+                                    {foreach $pagetype as $vo}
+                                    <option value="{$vo.name}">{$vo.name}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            <div class="search-item col-md-3 col-sm-6">
+                                <span>佣金比</span>
+                                <select name="yongjinbi"  class="form-control m-b-10">
+                                    <option value="">请选择</option>
+                                    {foreach $yongjin as $vo}
+                                    <option value="{$vo.status}">{$vo.value}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            <div class="search-item col-md-3 col-sm-6">
+                                <span>粉丝数量</span>
+                                <select name="fansshuliang" class="form-control m-b-10">
+                                    <option value="">请选择</option>
+                                    {foreach $fans as $vo}
+                                    <option value="{$vo.status}">{$vo.value}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            <div class="search-item col-md-3 col-sm-6">
+                                <span>状态</span>
+                                <select name="zhuangtai"  class="form-control m-b-10">
+                                    <option value="">请选择</option>
+                                    <{foreach $stutus as $vo}
+                                    <option value="{$vo.status}">{$vo.value}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+
+                            <div class="search-btn col-md-12">
+                                <button type="submit" class="btn btn-default">搜索</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="panel table-list">
+                    <div class="panel-heading">
+                 <span class="panel-title">
+                             PAGE列表
+                 </span>
+
+                        <span class="panel-remove">
+                             <a href="{:url('/admin/page/addpage')}"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;添加</a>
+                </span>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <div class="panel-body table-responsive">
+
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>USER ID</th>
+                                <th>PAGE ID</th>
+                                <th>PAGE类型</th>
+                                <th>粉丝数量</th>
+                                <th>APAG活跃度</th>
+                                <th>佣金比</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {foreach $userinfo as $ov}
+                            <tr>
+                                <td>{$ov.user_id}</td>
+                                <td>{$ov.page_id}</td>
+                                <td>{$ov.page_type}</td>
+                                <td>{$ov.fans}</td>
+                                <td>
+                                    {switch	name="$ov.page_activity_status"}
+                                    {case	value="低"}<span class="label label-warning">{$ov.page_activity_status}</span>{/case}
+                                    {case	value="一般"}<span class="label label-primary">{$ov.page_activity_status}</span>{/case}
+                                    {case	value="较高"}<span class="label label-success">{$ov.page_activity_status}</span>{/case}
+                                    {case	value="高"}<span class="label label-danger">{$ov.page_activity_status}</span>{/case}
+                                    {/switch}
+                                </td>
+                                <td>{$ov.commission}</td>
+
+                                <td>
+                                    {switch	name="$ov.status"}
+                                    {case	value="1"}<span class="label label-type label-danger">合作中</span>{/case}
+                                    {case	value="2"}<span class="label label-type label-default">停止合作</span>{/case}
+                                    {case	value="3"}<span class="label label-type label-primary">联系中</span>{/case}
+                                    {case	value="4"}<span class="label label-type label-success">待联系</span>{/case}
+                                    {default	/}--
+                                    {/switch}
+                                </td>
+                                <td>
+                                    <a href="editPage?id={$ov.id}" class="edit-this">编辑</a>
+                                </td>
+                            </tr>
+                            {/foreach}
+                            </tbody>
+                        </table>
+
+                        <div>
+                            <ul class="pagination pagination-sm pull-right">
+                                {$userinfo->render()}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>

@@ -1,0 +1,22 @@
+
+<div class="left-side">
+    <div class="user-content">
+        <div class="img" data-toggle="modal" data-target="#user-Modal">
+            <a href="javascript:void(0)"><img src="__MEMBER_IMAGES_PATH__user.jpg" alt=""></a>
+        </div>
+        <div class="use-name">
+            <span></span><span>{php} echo getMemberName(); {/php}</span>
+        </div>
+        <span class="user-type">Welcome</span>
+    </div>
+    <div class="left-nav">
+        <ul>
+            <li><a href="{:url('/member/user/orderList')}"  <?php if(\think\Request::instance()->action() == 'orderlist' )echo 'style="background-color: #1e2324"';?>>
+                <label <?php if(\think\Request::instance()->action() == 'orderlist' )echo 'style="display: block"';?>></label><span class="nav-first"><i class="icon iconfont icon-zhanghuguanli2"></i></span><span class="nav-last ">ORDERS</span></a></li>
+            <li><a href="{:url('/member/user/postsList')}" <?php if(\think\Request::instance()->action() == 'postslist' || \think\Request::instance()->action() == 'details' )echo 'style="background-color: #1e2324"';?>>
+                <label <?php if(\think\Request::instance()->action() == 'postslist' )echo 'style="display: block"';?>></label><span class="nav-first "><i class="icon iconfont icon-chazhaobiaodanliebiao"></i></span><span class="nav-last">POSTS</span></a></li>
+            <li><a href="{:url('/member/user/personal')}" <?php if(\think\Request::instance()->action() == 'personal' )echo 'style="background-color: #1e2324"';?>>
+                <label <?php if(\think\Request::instance()->action() == 'personal' )echo 'style="display: block"';?>></label><span class="nav-first"><i class="icon iconfont icon-liebiao5"></i></span><span class="nav-last">ACCOUNTS</span></a></li>
+      </ul>
+    </div>
+</div>

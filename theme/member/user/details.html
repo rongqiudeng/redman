@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAGE列表</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__page.css">
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__user-page.css">
+</head>
+
+<body>
+<div  class="skin-black" >
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div >
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">Posts</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <span class="panel-title">
+                             DETAILS
+                         </span>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="panel-body post-show">
+
+                        <div class="post-contents">
+                            <div class="post-link">
+                                <ul>
+                                    <li>
+                                        <span>The makings are graceful noble and cordial.</span>
+                                    </li>
+                                    <li><span>Shop Left=></span>
+                                        <a href="" class="post-link-item">http://bit.ly/2yzrs1j</a>
+                                    </li>
+                                    <li>
+                                        <span>Shop Left=></span>
+                                        <a href="" class="post-link-item">http://bit.ly/2yzrs1j</a>
+                                    </li>
+                                    <li>
+                                        <span>Shop Left=></span>
+                                        <a href="" class="post-link-item">http://bit.ly/2yzrs1j</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="post-img">
+                                <img src="__MEMBER_IMAGES_PATH__user.jpg" alt="">
+                            </div>
+                            <div class="post-send">
+                                <span class="post-send-num">Usage count 10</span>
+                                <a href="javascript:void(0)" class="post-send-btn" data-toggle="modal" data-target="#sendModal">SEND</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--发送弹框-->
+<div class="modal fade" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body" style="padding: 0">
+
+
+                <div class="form-horizontal page-select">
+                    <div class="form-group">
+                        <label for="disabledSelect"  class="col-sm-5 control-label">Forward to PAGE ID: </label>
+                        <div class="col-sm-4" style="padding-left: 5px;">
+                            <select class="form-control" id="disabledSelect">
+                                <option>DFGDFGFGF</option>
+                                <option>DFGDFGD2</option>
+                                <option>DFGDFGDFG3</option>
+                                <option>DFGDFGDF4</option>
+                                <option>DFGDFGDF5D</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="set-time">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" checked="checked"> Publication
+                        </label>
+                    </div>
+                    <div class="set-time-text">
+                        Select a date and time in the future for when you want your
+                        post to publish.
+                    </div>
+
+
+
+                    <div class="input-group date form_date col-md-4" data-date=""
+                         data-date-format="yyyy-mm-dd H:m:s" data-link-field="dtp_input2"
+                         data-link-format="yyyy-mm-dd H:m:s" style="float: left">
+                        <input class="form-control no-right-border" size="16" type="text" name="create_time" value="" readonly>
+                        <span class="input-group-addon"><span
+                                class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input size="16" type="text"  readonly class="form-control form_time">
+                    </div>
+
+                    <span class="time-utc">UTC+08</span>
+
+                    <div style="clear: both"></div>
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn Schedule">Schedule</button>
+                <button type="button" class="btn Confirm">Confirm</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap-datetimepicker.js"></script>
+<script src="__MEMBER_JS_PATH__/public.js"></script>
+
+<script type="text/javascript">
+
+    $(".form_date").datetimepicker({
+        minView: "month",//只选择到月份
+        autoclose :true ,  //是否自动关闭
+        showMeridian:true,
+        format: 'yyyy/mm/dd'
+    });
+
+    $(".form_time").datetimepicker({
+        weekStart: true,
+        autoclose :true ,  //是否自动关闭
+        todayBtn:  1,
+        format: "hh:ii",
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+        //minuteStep:5,  //分钟最小间隔
+    });
+
+    function setTime() {
+        $(".form_date").datetimepicker('setDate', (new Date()) );
+        $(".form_time").datetimepicker('setDate', (new Date()) );
+    }
+    setTime();
+</script>

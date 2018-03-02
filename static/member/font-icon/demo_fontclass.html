@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>IconFont</title>
+    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="iconfont.css">
+</head>
+<body>
+    <div class="main markdown">
+        <h1>IconFont 图标</h1>
+        <ul class="icon_lists clear">
+            
+                <li>
+                <i class="icon iconfont icon-tianjiatupian"></i>
+                    <div class="name">添加图片</div>
+                    <div class="fontclass">.icon-tianjiatupian</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-zhanghu"></i>
+                    <div class="name">账户</div>
+                    <div class="fontclass">.icon-zhanghu</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-chazhaobiaodanliebiao"></i>
+                    <div class="name">查找 表单 列表</div>
+                    <div class="fontclass">.icon-chazhaobiaodanliebiao</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-shuxingliebiaoxiangqing"></i>
+                    <div class="name">属性 列表 详情</div>
+                    <div class="fontclass">.icon-shuxingliebiaoxiangqing</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-liebiao5"></i>
+                    <div class="name">列表 (5)</div>
+                    <div class="fontclass">.icon-liebiao5</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-tianjiatupian1"></i>
+                    <div class="name">添加图片</div>
+                    <div class="fontclass">.icon-tianjiatupian1</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-kaiqi"></i>
+                    <div class="name">开启</div>
+                    <div class="fontclass">.icon-kaiqi</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-yonghuzhongxin"></i>
+                    <div class="name">用户中心</div>
+                    <div class="fontclass">.icon-yonghuzhongxin</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-zhanghuguanli2"></i>
+                    <div class="name">账户管理</div>
+                    <div class="fontclass">.icon-zhanghuguanli2</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-bili"></i>
+                    <div class="name">比例</div>
+                    <div class="fontclass">.icon-bili</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-kaiqi1"></i>
+                    <div class="name">开启</div>
+                    <div class="fontclass">.icon-kaiqi1</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-yunxingzhuangtair"></i>
+                    <div class="name">运行状态r</div>
+                    <div class="fontclass">.icon-yunxingzhuangtair</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-icon-test"></i>
+                    <div class="name">选择类型选中</div>
+                    <div class="fontclass">.icon-icon-test</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-weibiaoti-"></i>
+                    <div class="name">活跃度</div>
+                    <div class="fontclass">.icon-weibiaoti-</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-page1"></i>
+                    <div class="name">page</div>
+                    <div class="fontclass">.icon-page1</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-beizhu"></i>
+                    <div class="name">备注</div>
+                    <div class="fontclass">.icon-beizhu</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-duihao1"></i>
+                    <div class="name">对号</div>
+                    <div class="fontclass">.icon-duihao1</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-paypal"></i>
+                    <div class="name">paypal</div>
+                    <div class="fontclass">.icon-paypal</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-fensi1"></i>
+                    <div class="name">粉丝</div>
+                    <div class="fontclass">.icon-fensi1</div>
+                </li>
+            
+        </ul>
+
+        <h2 id="font-class-">font-class引用</h2>
+        <hr>
+
+        <p>font-class是unicode使用方式的一种变种，主要是解决unicode书写不直观，语意不明确的问题。</p>
+        <p>与unicode使用方式相比，具有如下特点：</p>
+        <ul>
+        <li>兼容性良好，支持ie8+，及所有现代浏览器。</li>
+        <li>相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
+        <li>因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。</li>
+        <li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
+        </ul>
+        <p>使用步骤如下：</p>
+        <h3 id="-fontclass-">第一步：引入项目下面生成的fontclass代码：</h3>
+
+
+        <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;link rel="stylesheet" type="text/css" href="./iconfont.css"&gt;</span></code></pre>
+        <h3 id="-">第二步：挑选相应图标并获取类名，应用于页面：</h3>
+        <pre><code class="lang-css hljs">&lt;<span class="hljs-selector-tag">i</span> <span class="hljs-selector-tag">class</span>="<span class="hljs-selector-tag">iconfont</span> <span class="hljs-selector-tag">icon-xxx</span>"&gt;&lt;/<span class="hljs-selector-tag">i</span>&gt;</code></pre>
+        <blockquote>
+        <p>"iconfont"是你项目下的font-family。可以通过编辑项目查看，默认是"iconfont"。</p>
+        </blockquote>
+    </div>
+</body>
+</html>

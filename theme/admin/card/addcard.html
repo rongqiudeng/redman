@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加帖子</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+    <style>
+        .plus {
+            padding-left: 20px;
+            float: left
+        }
+
+        .glyphicon-plus-sign {
+            color: rgb(255, 0, 0);
+            font-size: 25px;
+        }
+
+        .glyphicon-plus-sign:hover {
+            cursor: pointer;
+            color: rgb(255, 77, 90);
+        }
+
+        .jian {
+            padding-left: 20px;
+            float: left
+        }
+
+        .glyphicon-minus-sign {
+            color: rgb(255, 0, 0);
+            font-size: 25px;
+        }
+
+        .glyphicon-minus-sign:hover {
+            cursor: pointer;
+            color: rgb(255, 77, 90);
+        }
+        .card-box .panel-title{
+            padding-bottom: 10px;
+        }
+        .card-box .panel-heading{
+            padding: 0px;
+            padding-bottom: 15px;
+        }
+        .up-copy-bt button{
+            padding: 6px 25px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="skin-black">
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div class="">
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">帖子列表</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <span class="panel-title">
+                             编辑
+                         </span>
+                        <span class="panel-remove">
+                             <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;清空</a>
+                         </span>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <div class="panel-body card-box" >
+                        <form action="{:url('/admin/card/saveCard')}" method="post" enctype="multipart/form-data">
+
+                            <div class="panel-heading url-input">
+                                <span class="panel-title"> 原始URL： </span>
+                                <div style="clear:both"></div>
+                                <input type="text" class="form-control col-md-5 col-sm-10" name="url[]"
+                                       style="width: 83.333%" placeholder="请输原始url">
+                                <div class="plus"><span class="glyphicon glyphicon-plus-sign"></span></div>
+                                <div style="clear:both"></div>
+                            </div>
+
+                            <div id="more-input">
+                            </div>
+
+                            <div class="panel-heading">
+                                <span class="panel-title"> 图片： </span>
+                                <div style="clear:both"></div>
+                                <input type="file" class="" id="inputfile" name="file" onchange="PreviewImage(this)">
+                                <div style="clear:both"></div>
+                            </div>
+
+                            <div class="panel-heading">
+                                <span class="panel-title"> 图片预览：</span>
+                                <div style="clear:both"></div>
+                                <div id="imgPreview">
+                                    <img id="img1" src="" class="img-rounded" alt="" width="100" height="100"/>
+                                </div>
+                            </div>
+
+                            <div style="clear: both"></div>
+                            <div class="panel-heading col-md-10 col-sm-12">
+                                <span class="panel-title">文案：</span>
+                                <div style="clear:both"></div>
+                                <textarea class="form-control" rows="8" name="content" placeholder="格式：左侧文案1：#url1"></textarea>
+                            </div>
+
+                            <div class="col-md-10 col-sm-12 up-copy-bt pull-left">
+                                <button type="submit" class="btn btn-primary">发布</button>
+                                <a onclick="javascript:history.go(-1)" class="btn btn-primary">返回</a>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>
+<script>
+    function PreviewImage(imgFile) {
+        var filextension = imgFile.value.substring(imgFile.value.lastIndexOf("."), imgFile.value.length);
+        filextension = filextension.toLowerCase();
+        if ((filextension != '.jpg') && (filextension != '.gif') && (filextension != '.jpeg') && (filextension != '.png') && (filextension != '.bmp')) {
+            alert("对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !");
+            imgFile.focus();
+        }
+        else {
+            var path;
+            if (document.all)//IE
+            {
+                imgFile.select();
+                path = document.selection.createRange().text;
+                document.getElementById("imgPreview").innerHTML = "";
+                document.getElementById("imgPreview").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\"" + path + "\")";//使用滤镜效果
+            }
+            else//FF
+            {
+                path = window.URL.createObjectURL(imgFile.files[0]);// FF 7.0以上
+                //path = imgFile.files[0].getAsDataURL();// FF 3.0
+                document.getElementById("imgPreview").innerHTML = "<img id='img1'  class='img-rounded' alt='' width='100px' height='100px' src='" + path + "'/>";
+                //document.getElementById("img1").src = path;
+            }
+        }
+    }
+
+    $(".glyphicon-plus-sign").click(function () {
+        $("#more-input").append('<div class="panel-heading url-input">\n' +
+            '                                    <input type="text" class="form-control col-md-6 col-sm-8"  name="url[]" style="width: 83.333%" placeholder="请输原始url">\n'
+            + '<div class="jian"><span class="glyphicon glyphicon-minus-sign"></span></div>' +
+            '                                    <div style="clear:both"></div>\n' +
+            '                                </div>');
+        jianshao();
+        menuHeight();
+
+    });
+
+    function jianshao() {
+        $(".jian").each(function () {
+            $(this).click(function () {
+                $(this).parents(".url-input").remove();
+            });
+        });
+    }
+
+    function menuHeight() {
+        if( $('.left-side').height()<$('.right-side').height()){
+
+            $('.left-side').height($('.right-side').height()+20);
+        }else {
+
+            $('.left-side').height('100%');
+        }
+    }
+</script>

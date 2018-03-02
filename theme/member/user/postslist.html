@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAGE列表</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__page.css">
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__user-page.css">
+</head>
+<body>
+<div  class="skin-black" >
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div >
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">Posts</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <span class="panel-title">
+                             SELECT
+                         </span>
+                        <span class="panel-remove">
+                             <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;Empty</a>
+                         </span>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="panel-body">
+
+                        <form action="{:url('/member/user/postsSearch')}" enctype="multipart/form-data" name="mainform" method="post">
+
+                            <div class="search-item col-md-3 col-sm-6" >
+                                <span>ID</span>
+                                <input type="text" name="id" class="form-control">
+                            </div>
+                            <div class="search-item col-md-3 col-sm-6">
+                                <span>TEXT</span>
+                                <input type="text" name="text" class="form-control">
+                            </div>
+
+                            <div class="search-item col-md-3 col-sm-6" >
+                                <span>TIME</span>
+                                <input type="text" name="time" class="form-control">
+                            </div>
+                            <div class="search-item col-md-3 col-sm-6">
+                                <span>STATUS</span>
+                                <input type="text" name="status" class="form-control">
+                            </div>
+
+                            <div class="search-btn col-md-12">
+                                <button type="submit" class="btn btn-default">SEARCH</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="panel user-post">
+
+                    <div class="panel-body table-responsive">
+
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>IMAGE</th>
+                                <th style="text-align: center">TEXT</th>
+                                <th>TIME</th>
+                                <th>STATUS</th>
+                                <th>OPERATE</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {foreach $postsinfo as $vo}
+                            <tr>
+                                <td>{$vo.id}</td>
+                                <td CLASS="copy-shop-img">
+                                    <img src="{$vo.images_url}" alt="">
+                                </td>
+                                <td>{$vo.text}</td>
+                                <td>{$vo.createTime}</td>
+                                <td>
+                                    {switch name="$vo.status"}
+                                    {case value="0"}No push{/case}
+                                    {case value="1"}Pushd{/case}
+                                    {case value="2"}Off the shelf{/case}
+                                    {/switch}
+                                </td>
+                                <td><a href="details?id={$vo.id}" class="details">DETAILS</a>
+                                    {if condition="$vo.status eq 0"}<a href="sendMsg?id={$vo.id}" class="send">SEND</a>
+                                    {elseif condition="$vo.status eq 1 or 2"}<a class="send" >/</a>
+                                    {/if}
+                                </td>
+                            </tr>
+                            {/foreach}
+
+                            </tbody>
+                        </table>
+
+                        <div>
+                            <ul class="pagination pagination-sm pull-right">
+                                {$postsinfo->render()}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+发送弹框
+<div class="modal fade" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body" style="padding: 0">
+
+
+                <div class="form-horizontal page-select">
+                    <div class="form-group">
+                        <label for="disabledSelect"  class="col-sm-5 control-label">Forward to PAGE ID: </label>
+                        <div class="col-sm-4" style="padding-left: 5px;">
+                            <select class="form-control" id="disabledSelect">
+                                {foreach $pid as $vo}
+                                <option value="{$vo.page_id}">{$vo.page_id}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="set-time">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" checked="checked"> Publication
+                        </label>
+                    </div>
+                    <div class="set-time-text">
+                        Select a date and time in the future for when you want your
+                        post to publish.
+                    </div>
+
+
+
+                    <div class="input-group date form_date col-md-4" data-date=""
+                         data-date-format="yyyy-mm-dd H:m:s" data-link-field="dtp_input2"
+                         data-link-format="yyyy-mm-dd H:m:s" style="float: left">
+                        <input class="form-control no-right-border" size="16" type="text" name="create_time" value="" readonly>
+                        <span class="input-group-addon"><span
+                                class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input size="16" type="text"  readonly class="form-control form_time">
+                    </div>
+
+                    <span class="time-utc">UTC+08</span>
+
+                    <div style="clear: both"></div>
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn Schedule">Schedule</button>
+                <a href="sendMsg?id=" type="button" class="btn Confirm">Confirm</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap-datetimepicker.js"></script>
+<script src="__MEMBER_JS_PATH__/public.js"></script>
+
+<script type="text/javascript">
+
+    $(".form_date").datetimepicker({
+        minView: "month",//只选择到月份
+        autoclose :true ,  //是否自动关闭
+        showMeridian:true,
+        format: 'yyyy/mm/dd'
+    });
+
+    $(".form_time").datetimepicker({
+        weekStart: true,
+        autoclose :true ,  //是否自动关闭
+        todayBtn:  1,
+        format: "hh:ii",
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+        //minuteStep:5,  //分钟最小间隔
+    });
+
+    function setTime() {
+        $(".form_date").datetimepicker('setDate', (new Date()) );
+        $(".form_time").datetimepicker('setDate', (new Date()) );
+    }
+
+
+
+
+
+</script>

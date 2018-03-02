@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+    <style>
+        .fasong{margin-top: 20px}
+
+        #paixu{
+            display: inline-block;
+            position: relative;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        #paixu #paixu-zx{
+            position: absolute;
+            top:-14px;
+
+        }
+        #paixu #paixu-dx{
+            position: absolute;
+            top: -7px;
+        }
+    </style>
+</head>
+<body>
+{php}
+ $product_status = config('product_status');
+{/php}
+<div class="skin-black">
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div>
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">商品列表</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <span class="panel-title">
+                             筛选
+                         </span>
+                        <span class="panel-remove">
+                             <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;清空</a>
+                         </span>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div class="panel-body copy-list-input">
+
+                        <form action="{:url('/admin/product/productSearch')}" enctype="multipart/form-data" method="post" role="form">
+
+                            <div class="search-item col-md-3 col-sm-6" style="padding-left: 0">
+                                <span>ID</span>
+                                <input type="text" class="form-control" name="id">
+                            </div>
+
+                            <div class="search-item col-md-3 col-sm-6" style="padding-left: 0">
+                                <span>标题</span>
+                               <input type="text" class="form-control" name="title">
+                            </div>
+                            <div class="search-item col-md-3 col-sm-6" style="padding-left: 0">
+                                <span>SKU</span>
+                                <input type="text" class="form-control" name="sku">
+                            </div>
+
+
+                            <div class="form-group  col-md-3 col-sm-6" style="padding-left: 0">
+                                <label for="dtp_input2" class="col-md-12 control-label" style="">时间</label>
+                                <div class="input-group date form_date col-md-12" data-date=""
+                                     data-date-format="yyyy-mm-dd H:m:s" data-link-field="dtp_input2"
+                                     data-link-format="yyyy-mm-dd H:m:s">
+                                    <input class="form-control" size="16" type="text" name="create_time" value="" readonly>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                                <input type="hidden" id="dtp_input2" value=""/>
+                            </div>
+
+
+                            <div class="search-btn col-md-12">
+                                <button type="submit" class="btn btn-default">搜索</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="panel table-list">
+
+                    <div class="panel-heading">
+                <span class="panel-title">
+                             帖子列表
+                </span>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <div class="panel-body table-responsive">
+
+
+                        <table class="table table-hover  copy-table">
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" id="quanxuan" style="width: 17px ; height: 17px;"></th>
+                                <th>ID</th>
+                                <th>图片</th>
+                                <th>标题</th>
+                                <th>SKU</th>
+                                <th>时间
+                                    <span id="paixu">
+                                       <i class="fa fa-caret-up" id="paixu-zx"  aria-hidden="true"></i>
+                                       <i class="fa fa-caret-down" id="paixu-dx" aria-hidden="true"></i>
+                                   </span>
+                                </th>
+                                <th>状态</th>
+                                <th>操作</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                {foreach $productlist as $ov}
+                                <td><input type="checkbox" class="qx checkbox" name="checkbox" value="{$ov.id}"  style="width: 15px ; height: 15px;"/></td>
+                                <td>{$ov.id}</td>
+                                <td class="copy-shop-img"><img src="{$ov.images_url}"  title="{:htmlspecialchars_decode($ov.sku)}"></td>
+                                <td>{$ov.title}</td>
+                                <td>{:htmlspecialchars_decode($ov.sku)}</td>
+                                <td>{$ov.create_time}</td>
+                                <td>
+                                    {switch name="$ov.status"}
+                                        {case value="0"}{$product_status['0']}{/case}
+                                        {case value="1"}{$product_status.1}{/case}
+                                    {/switch}
+                                </td>
+                                <td>
+                                    {if condition="$ov.status == 1"}<a href="del?id={$ov.id}" class="btn btn-warning">删除</a>
+                                    {elseif condition="$ov.status == 0"}<a href="setShow?id={$ov.id}" class="btn btn-primary">提交</a>
+                                    {/if}
+                                </td>
+                            </tr>
+                            {/foreach}
+                            </tbody>
+                        </table>
+                        <div class="fasong">
+                            <a class="label label-success" id="setShow" >提交</a>
+                            <a class="label label-success" d="del" >删除</a>
+                        </div>
+                        <div>
+                            <ul class="pagination pagination-sm pull-right" style="height: 30px;">
+                                {$productlist->render()}
+                            </ul>
+                            <div style="clear: both"></div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>
+
+<!--日期-->
+<link href="__BOOTSTRAP__css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="__BOOTSTRAP__js/bootstrap-datetimepicker.min.js"></script>
+<script src="__BOOTSTRAP__js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    $(function () {
+        $('.form_date').datetimepicker({
+            language: 'zh-CN',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0,
+            format:'yyyy-mm-dd',
+            pickerPosition:'bottom-left'
+        });
+    });
+    //上架时间正向排序
+    $("#paixu-zx").click(function () {
+        window.location.href = '/admin/product/productList'+'?order=ASC'
+    });
+    //上架时间倒序
+    $("#paixu-dx").click(function () {
+        window.location.href = '/admin/product/productList'+'?order=DESC'
+    });
+    //提交
+    $("#setShow").click(function(){
+        var aa=new Array();
+        $("input[name='checkbox']:checkbox:checked").each(function(){
+            aa=$(this).val();
+            console.log(aa);
+            $.post('/admin/card/setShow',{id:aa},function(){
+                location.reload()});
+        });
+        if(aa==''){
+            alert("请选择发送项");
+        }
+    });
+    //删除
+    $("#del").click(function(){
+        var aa=new Array();
+        $("input[name='checkbox']:checkbox:checked").each(function(){
+            aa=$(this).val();
+            console.log(aa);
+            $.post('/admin/product/setShow',{id:aa},function(){
+                location.reload()});
+        });
+        if(aa==''){
+            alert("请选择发送项");
+        }
+    });
+</script>

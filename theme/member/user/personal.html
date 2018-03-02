@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Center</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__page.css">
+    <link rel="stylesheet" href="__MEMBER_CSS_PATH__details.css">
+</head>
+<body>
+{php}
+$admin_role=config("admin_role");
+{/php}
+<div  class="skin-black" >
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div >
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">Personal Center</a></span>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="bg-img">
+
+                        <div class="bg-icon">
+                            <img src="/static/member/images/touxiang.jpg" alt="">
+                        </div>
+
+                    </div>
+
+
+                    <div class="personal-box">
+                        <form class="form-horizontal">
+                            <input type="hidden" name="id" id="staffId" value="{$userinfo.uid}">
+                            <div class="form-group personal-item">
+                                <label for="inputEmail3" class="col-sm-4 control-label">用户名 :</label>
+                                <div class="col-sm-8">
+                                    <label  class="control-label personal-text">{$userinfo.name}</label>
+                                    <input type="text" class="form-control personal-input" id="userName"  placeholder="Name">
+                                </div>
+                            </div>
+
+                            <div class="form-group personal-item">
+                                <label  class="col-sm-4 control-label">性别 :</label>
+                                <div class="col-sm-8">
+                                    <label  class="control-label personal-text-sex">{if condition="$userinfo.sex eq 1")}美女{elseif condition="$userinfo.sex eq 2"/}帅哥{/if}</label>
+
+                                    <div class="personal-input-sex">
+                                        <label class="radio-inline">
+                                            <input  type="radio" name="sex" id="inlineRadio1" value="1" checked> 女
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input  type="radio" name="sex" id="inlineRadio2" value="2"> 男
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group personal-item">
+                                <label for="inputEmail3" class="col-sm-4 control-label">电子邮箱 :</label>
+                                <div class="col-sm-8">
+                                    <label  class="control-label personal-text">{$userinfo.email}</label>
+                                    <input type="email" class="form-control personal-input" id="inputEmail3" >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="personal-edit">
+                                    <label  class="col-sm-4 control-label">权限 :</label>
+                                    <div class="col-sm-8">
+                                        <label class="control-label personal-text-color">
+                                            {switch name="$userinfo.staffStatus"}
+                                            {case value="0"}{$admin_role['0']}{/case}
+                                            {case value="1"}{$admin_role['1']}{/case}
+                                            {case value="2"}{$admin_role['2']}{/case}
+                                            {case value="3"}{$admin_role['3']}{/case}
+                                            {case value="4"}{$admin_role['4']}{/case}
+                                            {case value="5"}{$admin_role['5']}{/case}
+                                            {/switch}</label>
+                                    </div>
+                                </div>
+                                <div class="personal-btn">
+                                    <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#Modalpad">Change passwords</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="personal-edit">
+                                    <label  class="col-sm-4 control-label">注册时间 :</label>
+                                    <div class="col-sm-8">
+                                        <label class="control-label personal-text-color">{$userinfo.createTime}</label>
+                                    </div>
+                                </div>
+
+                                <div class="personal-btn">
+                                    <button type="button" class="btn btn-danger" onclick="editUser()">Modify information</button>
+                                </div>
+                                <div class="personal-btn">
+                                    <button type="button" id="save-hidden" class="btn btn-success" onclick="saveUser()">Save information</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--修改密码弹框-->
+<div class="modal fade" id="Modalpad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h5 class="modal-title" >
+                    修改密码
+                </h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="oldpad" class="col-sm-4 control-label">原密码 :</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="oldpad" name="oldpassword" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="newpad" class="col-sm-4 control-label">新密码 :</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="newpad" name="newpassword" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pad" class="col-sm-4 control-label">确认密码 :</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="pad" name="password" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary xiugai" onclick="ChangePad()">确认修改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__MEMBER_JS_PATH__/public.js"></script>
+<script>
+    $('.personal-input').each(function () {
+        $(this).css('display','none');
+        $('.personal-input-sex').css('display','none');
+    })
+
+
+    function editUser() {
+
+        if( $('.personal-input').css('display')=='block'){
+            return false;
+        }
+
+        $('.btn-success').css('display','block');
+
+        $('.personal-text').each(function () {
+            $(this).siblings().val($(this).text());
+            $(this).css('display', 'none');
+            $(this).siblings().css('display', 'block');
+        })
+
+        $('.personal-text-sex').css('display', 'none');
+        $('.personal-input-sex').css('display', 'block');
+
+        if ($('.personal-text-sex').text() == '女') {
+            $('#inlineRadio1').attr('checked', true);
+            $('#inlineRadio2').attr('checked', false);
+        } else {
+            $('#inlineRadio2').attr('checked', false);
+            $('#inlineRadio1').attr('checked', true);
+        }
+    }
+
+    function saveUser() {
+
+        if( $('.personal-input').css('display')=='none'){
+            return false;
+        }
+
+        $('.personal-input').each(function () {
+            $(this).siblings().text($(this).val());
+            $(this).css('display', 'none');
+            $(this).siblings().css('display', 'block');
+        })
+
+        $('.personal-text-sex').css('display', 'block');
+        $('.personal-input-sex').css('display', 'none');
+
+        var  sexVal=$('.personal-input-sex input:radio[name="sex"]:checked').val();
+
+
+        var name  = $("#userName").val();
+        var em = $("#inputEmail3").val();
+        var uid = $("#staffId").val();
+        $.ajax({
+            url:"{:url('/admin/admin/changeInfo')}",
+            data:{id:uid,userName:name,sex:sexVal,email:em},
+            type:"POST",
+            datatype:"json",
+            async:false,
+            success:function (e) {
+                if(e.status == 1){
+//                    alert(e.msg);
+                    $("#save-hidden").css('display','none');
+                    window.location.reload();
+
+                }
+                if(e.status == 2){
+                    $("#save-hidden").css('display','none');
+                    window.location.reload();
+                }
+            }
+        });
+
+
+    }
+
+
+    //修改密码
+    function ChangePad(){
+        var uid = $("#staffId").val();
+        var oldPad=$('#oldpad').val();
+        var newPad=$('#newpad').val();
+        var pad=$('#pad').val();
+
+        if(oldPad==""){
+            alert("请输入原始密码！");
+            $('#oldpad').focus();
+            return false;
+        }
+        if(newPad==""){
+            alert("请输入新密码！");
+            $('#newpad').focus();
+            return false;
+        }
+        if(pad==""){
+            alert("请输入确认密码！");
+            $('#pad').focus();
+            return false;
+        }
+
+        if(newPad!=pad){
+            alert("两次密码不一致！");
+            $('#pad').focus();
+            return false;
+        }
+        $.ajax({
+            url:"{:url('/member/user/changePwd')}",
+            data:{id:uid,oldPwd:oldPad,newPwd:newPad,newPw:pad},
+            type:"POST",
+            datatype:"json",
+            async:false,
+            success:function (e) {
+                if(e.status==1){
+                    alert(e.msg);
+                    //  回调成功
+                    $('#Modalpad input').val("");
+                    $('#Modalpad').modal('hide');
+                    $.cookie('PHPSESSID', null,{path:"/"});
+                }
+                if(e.status==2){
+                    alert(e.msg);
+                }
+                if(e.status==3){
+                    alert(e.msg);
+                }
+            }
+        });
+    }
+
+</script>

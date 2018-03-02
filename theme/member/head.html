@@ -1,0 +1,42 @@
+<div class="header">
+    <a href="/member/user/orderlist" class="tops"> Affilate Program </a>
+    <div class="nav">
+        <a href="javascript:void(0)" class="navbar-btn">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <div class="top-user">
+            <span class="user-img"><img src="__MEMBER_IMAGES_PATH__user.jpg" alt=""></span>
+            <a href="javascript:void(0)" class="user-name" data-toggle="modal" data-target="#user-Modal">
+                <span >{php} echo getMemberName(); {/php}</span>
+                <i class="caret"></i>
+            </a>
+            <div class="top-menu">
+                <div class="top-arrow">
+                    <div class="arrow-up1">
+                        <!--向上的三角-->
+                    </div>
+                    <div class="arrow-up2">
+                        <!--向上的三角-->
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#user-Modal" ><i class="fa fa-user fa-fw "></i> <span>Center</span></a></li>
+                    <li><a href="/member/login/goout" ><i class="fa fa-ban fa-fw"></i>  <span>Logout</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <!--语言切换-->
+        <div class="change-language" style="float: right;margin-right: 10px;height: 30px;">
+            <span style="display: inline-block;">Language:</span>
+            <select name="" id="" class="form-control m-b-10" style="display: inline-block;width: auto;padding: 3px;height: 30px;" onchange="changeLang(this)">
+                <option>{:lang('changeLang')}</option>
+                <option value="cn">{:lang('ZH')}</option>
+                <option value="en">{:lang('EN')}</option>
+            </select>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ForgotPassword</title>
+    <link rel="stylesheet" href="/static/Al-icon/iconfont.css">
+    <link rel="stylesheet" href="/static/portal/css/index.css">
+    <link rel="stylesheet" href="/static/portal/css/sign.css">
+</head>
+<body>
+<div class="head">
+    <div class="head-top-bg">
+        <div class="content-width">
+            <div class="head-top">
+                <div class="head-top-text">
+                    Affilate Program
+                </div>
+                <div class="head-top-nav">
+                    <a href="" class="top-phone">
+                        <i class="icon iconfont icon-phone"></i>
+                        +852 8172-0055
+                    </a>
+                    <a href="" class="top-sign">Sign in</a>
+                    <a href="" class="top-join">Join</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--导航栏-->
+    <div class="content-width">
+        <div class="head-nav">
+            <ul>
+                <li><a href="index.html" class="nav-home">HOME</a></li>
+                <li><a href="" class="nav-abount">ABOUT</a></li>
+                <li><a href="personal.html">COMMISSING</a></li>
+                <li><a href="posts.html">POSTS</a></li>
+                <li><a href="account.html">ACCOUNTS</a></li>
+                <li><a href="javascript:void(0)" class="nav-faq">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--灰色背景-->
+    <div class="gray-bg">
+
+    </div>
+
+</div>
+
+<div class="cut-off">
+    <div class="content-width">
+        <fieldset>
+            <legend><i class="icon iconfont icon-start"></i><i class="icon iconfont icon-start"></i><i class="icon iconfont icon-start"></i></legend>
+        </fieldset>
+        <div class="lg-title">Forgot your password?</div>
+        <span class="sm-title">
+           No problem!  <br>
+            We will send you an email to reset your password. Just enter the same email address you used for registration on Affilate Program. <br>
+           We will send you an email with instructions for resetting your password.
+        </span>
+    </div>
+</div>
+
+<div class="sign-box">
+    <div class="content-width">
+
+        <div class="sign-content">
+            <div class="sign-head">
+                <i class="icon iconfont icon-icon_mima"></i>
+                <span class="sign-head-text">
+                    PASSWORD
+                </span>
+            </div>
+            <div class="sign-form-title">
+                <span>Password Update</span>
+            </div>
+            <div class="sign-form" style="padding-top: 30px;">
+                <ul>
+
+                    <li>
+                        <span class="sign-form-left sign-input-text">E-mail</span>
+                        <span class="sign-form-right sign-input"><input type="text" id="email"></span>
+                    </li>
+
+                    <li>
+                        <div class="clear"></div>
+                        <div class="sign-show-text">
+                             <span class="sign-foot-text">
+                                 Has your email address changed, or you can not request your password?
+                            </span>
+                            <span class="sign-foot-text" style="color: #01965e">
+                                 Please contact our Support.
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="clear"></div>
+            </div>
+            <div class="sign-footer">
+                <span class="sign-form-left">
+                    <a href="{:url('/member/login/index')}" class=" sign-forgotten">Back to Sign In.</a>
+                </span>
+                <button class="sign-form-right sign-in-btn" id="send">Send Request</button>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="content-width">
+        <div class="footer-icon">
+            <i class="icon iconfont icon-facebook"></i>
+        </div>
+        <div class="footer-text-bottom">
+            Copyright © 2017 Affilate Program.com    About Us / FAQ / Contact Us
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="__LAYER__layer.js" type="text/javascript"></script>
+<script>
+$("#send").click(function () {
+    var reg = /^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/;
+   if($("#email").val() == ''){
+       layer.msg('Email cannot be empty！', {
+           icon: 2,
+           time: 2000
+       });
+       $("#email").val("");
+       $("#email").focus();
+       return false;
+   }
+   if(reg.test($("#email").val())==false){
+       layer.msg('The mailbox format is incorrect, please retype!', {
+           icon: 2,
+           time: 2000
+       });
+       $("#email").val("");
+       $("#email").focus();
+       return false;
+   }
+   $.ajax({
+       url:"{:url('/member/login/checkEmail')}",
+       data:{'email':$("#email").val()},
+       type:"POST",
+       datatype:"json",
+       success:function (e) {
+            if(e.status==0){
+                layer.msg(e.msg, {
+                    icon: 2,
+                    time: 2000
+                });
+                $("#email").val("");
+                $("#email").focus();
+                return false;
+            }
+            if(e.status == 1){
+                layer.msg(e.msg, {
+                    icon: 1,
+                    time:5000
+                });
+                $("#email").val("");
+                   setTimeout(function (){window.location.href = "{:url('member/login/index')}"},5000) ;
+            }
+       }
+   });
+
+});
+
+
+</script>

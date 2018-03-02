@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Affilate Program </title>
+    <link rel="stylesheet" href="/static/Al-icon/iconfont.css">
+    <link rel="stylesheet" href="/static/portal/css/index.css">
+    <link rel="stylesheet" href="/static/portal/css/sign.css">
+</head>
+<body>
+<div class="head">
+    <div class="head-top-bg">
+        <div class="content-width">
+            <div class="head-top">
+                <div class="head-top-text">
+                    Affilate Program
+                </div>
+                <div class="head-top-nav">
+                    <a href="" class="top-phone">
+                        <i class="icon iconfont icon-phone"></i>
+                        +852 8172-0055
+                    </a>
+                    <a href="" class="top-sign">Sign in</a>
+                    <a href="" class="top-join">Join</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--导航栏-->
+    <div class="content-width">
+        <div class="head-nav">
+            <ul>
+                <li><a href="index.html" class="nav-home">HOME</a></li>
+                <li><a href="" class="nav-abount">ABOUT</a></li>
+                <li><a href="personal.html">COMMISSING</a></li>
+                <li><a href="posts.html">POSTS</a></li>
+                <li><a href="account.html">ACCOUNTS</a></li>
+                <li><a href="javascript:void(0)" class="nav-faq">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--灰色背景-->
+    <div class="gray-bg">
+
+    </div>
+
+</div>
+
+<div class="cut-off">
+    <div class="content-width">
+        <fieldset>
+            <legend><i class="icon iconfont icon-start"></i><i class="icon iconfont icon-start"></i><i class="icon iconfont icon-start"></i></legend>
+        </fieldset>
+        <div class="lg-title">Create your free account</div>
+        <span class="sm-title">
+            Get started with our Aiffilate Program plan  <br>
+            Your account will allow access to Partners and more
+        </span>
+    </div>
+</div>
+
+<div class="sign-box">
+    <div class="content-width">
+
+        <div class="sign-content">
+            <div class="sign-head">
+                <i class="icon iconfont icon-zidong05"></i>
+                <span class="sign-head-text">
+                    SIGN IN OR SIGN UP
+                </span>
+            </div>
+            <div class="sign-form-title">
+                <span>Sign in</span>
+            </div>
+            <div class="sign-form">
+                <ul>
+                    <li class="sign-facebook">
+                        <span class="sign-form-left" style="padding-top: 3px;">Sign in with</span>
+                        <span class="sign-form-right">
+                              <!--<img src="img/facebook.png" alt="" class="facebook-icon">-->
+                              <a href="{:htmlspecialchars_decode($url)}" class="facebook-sign">Facebook</a>
+                            <!--<a href="{:htmlspecialchars_decode($url)}"><img src="/static/portal/images/fb-login.png"></a>-->
+                          </span>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="sign-or">
+                            <fieldset>
+                                <legend>OR</legend>
+                            </fieldset>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="sign-form-left sign-input-text">E-mail</span>
+                        <span class="sign-form-right sign-input"><input type="text" class="text"></span>
+                    </li>
+                    <li>
+                            <span class="sign-form-left sign-input-text">
+                                Password
+                            </span>
+                        <span class="sign-form-right sign-input">
+                                <input type="password" class="pwd">
+                            </span>
+                    </li>
+                    <li>
+                        <div class="clear"></div>
+                        <!--<div class="sign-show-text">
+                             <span class="sign-foot-text">
+
+                                 <input type="checkbox" id="checkbox1" class="regular-checkbox big-checkbox">
+                                 <label for="checkbox1"></label>
+                                  <span>I agree to read my Facebook account basic information and bind the account .</span>
+                            </span>
+                            <span class="sign-foot-text">
+                                   <input type="checkbox" id="checkbox2" class="regular-checkbox big-checkbox">
+                                   <label for="checkbox2"></label>
+                                   <span>I agree to automatically post 2 hours a day .</span>
+                            </span>
+                        </div>-->
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="sign-footer">
+               <span class="sign-form-left">
+                   <a href="{:url('member/login/forgotpwd')}" class=" sign-forgotten">Forgotten your password?</a>
+               </span>
+                <button  class="sign-form-right sign-in-btn" id="login" onclick="check()">Sign in</button>
+                <div class="clear"></div>
+            </div>
+
+            <div class="sign-form-title">
+                <span>Sign up</span>
+            </div>
+            <div class="sign-form" style="padding-top: 30px;">
+                <ul>
+                    <li >
+                        <span class="sign-form-left sign-input-text"> *E-mail </span>
+                        <span class="sign-form-right sign-input">
+                            <input type="text" id="email" onfocus="emailFocus()" onblur="emailBlur()" placeholder="Please enter your usual Email">
+                            <div id="eminfo" style="color: #ff0008"></div>
+                        </span>
+                    </li>
+                    <li>
+                            <span class="sign-form-left sign-input-text">
+                                *Password
+                            </span>
+                        <span class="sign-form-right sign-input">
+                                <input type="password" id="pwd1" onfocus="psd1Focus()" onblur="psd1Blur()"  placeholder=" Plase choose a complex one...">
+                            <div id="pwdinfo" style="color: #ff0008"></div>
+                            </span>
+                    </li>
+
+                    <li >
+                        <span class="sign-form-left sign-input-text"> *Please re-enterpassword </span>
+                        <span class="sign-form-right sign-input">
+                            <input type="password" id="pwd2" onfocus="psd2Focus()" onblur="psd2Blur()" placeholder="">
+                            <div id="pwdinfo2" style="color: #ff0008"></div>
+                        </span>
+                    </li>
+                    <li>
+                            <span class="sign-form-left sign-input-text">
+                                 *PP Mailbox
+                            </span>
+                        <span class="sign-form-right sign-input">
+                                <input type="text" id="PPid" onfocus="ppidFocus()" onblur="ppidBlur()" placeholder=" ">
+                            <div id="ppinfo" style="color: #ff0008"></div>
+                            </span>
+                    </li>
+                    <li>
+                            <span class="sign-form-left sign-input-text">
+                                  PP Telephone
+                            </span>
+                        <span class="sign-form-right sign-input">
+                                <input type="text" id="PPTel" onfocus="pptelFocus()" onblur="pptelBlur()" placeholder=" ">
+                            <div id="pptelinfo" style="color: #ff0008"></div>
+                            </span>
+                    </li>
+
+                    <li>
+                        <div class="clear"></div>
+                        <div class="sign-show-text">
+                             <span class="sign-foot-text">
+                                   <input type="checkbox" id="checkbox3" onclick="read()" value="read" class="regular-checkbox big-checkbox">
+                                   <label for="checkbox3" id="readinfo"></label>
+                                   <span>I agree to read my Facebook account basic information and bind the account .</span>
+                            </span>
+                            <span class="sign-foot-text">
+                                   <input type="checkbox" id="checkbox4" onclick="agree()" value="agree" class="regular-checkbox big-checkbox">
+                                   <label for="checkbox4" id="agreeinfo"></label>
+                                   <span>I agree to automatically post 2 hours a day .</span>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="clear"></div>
+            </div>
+            <div class="sign-footer">
+
+                <button  class="sign-up-btn" id="register" onclick="register()">Sign up</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="content-width">
+        <div class="footer-icon">
+            <i class="icon iconfont icon-facebook"></i>
+        </div>
+        <div class="footer-text-bottom">
+            Copyright © 2017 Affilate Program.com    About Us / FAQ / Contact Us
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="__LAYER__layer.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    /*********************************************************************/
+    /*****************************LOGIN***********************************/
+    /*********************************************************************/
+    $(function () {
+        $(".text").keydown(function (event) {
+            if (event.keyCode == 13) {
+                $(".pwd").focus();
+            }
+        });
+        $(".pwd").keydown(function (event) {
+            if (event.keyCode == 13) {
+                check();
+            }
+        });
+    });
+    function check() {
+        var userName = $(".text").val();
+        var passwd = $(".pwd").val();
+        if (userName == '') {
+            layer.msg('Username cannot be empty！', {
+                icon: 2,
+                time: 2000
+            });
+            $(".text").focus();
+            return false;
+        }
+        if (passwd == '') {
+            layer.msg('Password cannot be empty！', {
+                icon: 2,
+                time: 2000
+            });
+            $(".pwd").focus();
+            return false;
+        }
+        $.ajax({
+            url: "{:url('/member/login/checkLogin')}",
+            data: {userName: userName, loginPwd: passwd},
+            type: 'POST',
+            dataType: 'json',
+            success: function (e) {
+                if (e.status == 1) {
+                    layer.msg(e.msg, {
+                        icon: 2,
+                        time: 2000
+                    });
+                    $(".text").focus();
+                }
+                if (e.status == 2) {
+                    layer.msg(e.msg, {
+                        icon: 2,
+                        time: 2000
+                    });
+                    $(".pwd").focus();
+                }
+                if (e.status == 3) {
+                    layer.msg(e.msg, {
+                        icon: 1,
+                        time: 2000
+                    });
+                    window.location.href = '/member/user/orderList';
+                }
+            },
+            error: function (e) {
+                layer.msg(e.msg);
+            }
+        });
+    }
+
+    /*********************************************************************/
+    /*****************************Register********************************/
+    /*********************************************************************/
+
+
+    //Email Verification
+    function emailFocus() {
+        var eminfo = document.getElementById('eminfo');
+        eminfo.innerHTML = "Please enter your email mailbox";
+    }
+    function emailBlur() {
+        var email = document.getElementById("email");
+        var emailId = document.getElementById("eminfo");
+        var reg = /^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/;
+        if (email.value == "") {
+            emailId.style.color = "red";
+            emailId.innerHTML = "Mailbox cannot be empty";
+            return false;
+        }
+        if (reg.test(email.value) == false) {
+            emailId.style.color = "red";
+            emailId.innerHTML = "The mailbox format is incorrect, please retype";
+            return false;
+        }
+        emailId.style.color = "green";
+        emailId.innerHTML = "Mailbox format input is correct";
+        return true;
+    }
+
+    function psd1Focus() {
+        var pwdinfo = document.getElementById('pwdinfo');
+        pwdinfo.innerHTML = "Please enter 6 to 12 bit passwords";
+    }
+    function psd1Blur() {
+        var pwd1 = document.getElementById('pwd1');
+        var pwdinfo = document.getElementById('pwdinfo');
+        if(pwd1.value ==""){
+            pwdinfo.style.color = "red";
+            pwdinfo.innerHTML = "Password cannot be empty";
+            return false;
+        }
+        if(pwd1.value.length <6 || pwd1.value.length >12){
+            pwdinfo.style.color = "red";
+            pwdinfo.innerHTML = "The password length should be 6 to 12 bits";
+            return false;
+        }
+        pwdinfo.style.color = "green";
+        pwdinfo.innerHTML = "Correct password format input";
+        return true;
+    }
+
+    function psd2Focus() {
+        var pwdinfo2 = document.getElementById('pwdinfo2');
+        pwdinfo2.innerHTML = "Please enter the password again";
+    }
+    function psd2Blur() {
+        var pwd1 = document.getElementById('pwd1');
+        var pwd2 = document.getElementById('pwd2');
+        var pwdinfo2 = document.getElementById('pwdinfo2');
+        if(pwd2.value == ""){
+            pwdinfo2.style.color = "red";
+            pwdinfo2.innerHTML = "Password cannot be empty";
+            return false;
+        }
+        if(pwd1.value != pwd2.value){
+            pwdinfo2.style.color = "red";
+            pwdinfo2.innerHTML = "Two password inconsistencies";
+            return false;
+        }
+        pwdinfo2.style.color = "green";
+        pwdinfo2.innerHTML = "The two password is correct";
+        return true;
+    }
+
+    function ppidFocus() {
+        var ppinfo = document.getElementById('ppinfo');
+        ppinfo.innerHTML="Please enter the PayPal mailbox";
+    }
+    function ppidBlur() {
+        var ppid = document.getElementById('PPid');
+        var ppinfo = document.getElementById('ppinfo');
+        var reg = /^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/;
+        if(ppid.value == ""){
+            ppinfo.style.color = "red";
+            ppinfo.innerHTML = "PayPal mailbox cannot be empty";
+            return false;
+        }
+        if(reg.test(ppid.value) == false){
+            ppinfo.style.color = "red";
+            ppinfo.innerHTML = "Mailbox format input is correct";
+            return false;
+        }
+        ppinfo.style.color = "green";
+        ppinfo.innerHTML = "Mailbox format input is correct";
+        return true;
+    }
+
+    function  pptelFocus() {
+        var pptelinfo = document.getElementById('pptelinfo');
+        pptelinfo.innerHTML = "Please enter the phone number";
+    }
+    function pptelBlur() {
+        var pptel = document.getElementById('PPTel');
+        var pptelinfo = document.getElementById('pptelinfo');
+        var reg = /^(13|15|18)\d{9}$/;
+        if(pptel.value == ""){
+            pptelinfo.style.color = "red";
+            pptelinfo.innerHTML = "Cell phone number can not be empty";
+            return false;
+        }
+        if(reg.test(pptel.value) == false){
+            pptelinfo.style.color = "red";
+            pptelinfo.innerHTML = "Mobile phone number is not correct";
+            return false;
+        }
+        pptelinfo.style.color = "green";
+        pptelinfo.innerHTML = "Mobile phone number is correct";
+        return true;
+    }
+
+    function read() {
+        var readinfo = document.getElementById('readinfo');
+        if($("#checkbox3").is(":checked")){
+            readinfo.style.backgroundColor = "#fafafa";
+            return true;
+        }else {
+            readinfo.style.backgroundColor = "red";
+            return false;
+        }
+    }
+    function agree() {
+        var agreeinfo = document.getElementById('agreeinfo');
+        if($("#checkbox4").is(":checked")){
+            agreeinfo.style.backgroundColor = "#fafafa";
+            return true;
+        }else {
+            agreeinfo.style.backgroundColor = "red";
+            return false;
+        }
+    }
+
+    function register() {
+        var EM = emailBlur();
+        var PW1 = psd1Blur();
+        var PW2 = psd2Blur();
+        var PP = ppidBlur();
+        var PPTEL = pptelBlur();
+        var READ = read();
+        var AGREE = agree();
+        emailBlur();
+        psd1Blur();
+        psd2Blur();
+        ppidBlur();
+        pptelBlur();
+        read();
+        agree();
+        if(EM == true && PW1 == true && PW2 == true && PP == true && PPTEL == true && READ == true && AGREE == true){
+            $.ajax({
+                url:"{:url('member/login/doRegister')}",
+                data:{email:$("#email").val(),passwd:$("#pwd2").val(),ppid:$("#PPid").val(),pptel:$("#PPTel").val()},
+                type:"POST",
+                datatype:"json",
+                success:function (e) {
+                    if(e.status==1){
+                        window.location.href = '/member/login/authorization'
+                    }else {
+                        alert(e.msg);
+                    }
+                }
+            });
+        }else {
+            return false;
+        }
+    }
+
+
+</script>

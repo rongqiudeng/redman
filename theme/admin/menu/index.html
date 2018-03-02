@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <title>Admin2</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+
+    <!--css -->
+
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__SimpleTree.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+
+    <!--<script src="node_modules/jquery/dist/jquery.js"></script>-->
+    <script src="__JQUERY__jquery-2.1.4.min.js"></script>
+
+    <script  src="__ADMIN_JS_PATH__SimpleTree.js"></script>
+
+
+    <script>
+        $(function(){
+
+            $(".tree").SimpleTree({
+
+                /* 可无视代码部分*/
+
+                click:function(a){
+
+                    console.log($(a).text());
+
+                    if(!eval($(a).attr("hasChild"))){
+
+                        $('#type-name').val($(a).text());
+                        $('.attr-bg-btn').css('display','none');
+                        $('.attr-sm-btn').css('display','block');
+
+
+                    }else {
+                        $('#type-name').val('');
+
+                        console.log($(a).attr('id'));
+
+                        $('.attr-sm-btn').css('display','none');
+                        $('.attr-bg-btn').css('display','block');
+
+                    }
+                }
+
+            });
+
+        });
+
+
+    </script>
+
+
+</head>
+<body>
+
+
+<div  class="skin-black" >
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+    <!--嵌套视图层-->
+    <div class="right-side ">
+        <div >
+            <div class="content-nav col-md-12">
+                <span><i class="fa fa-home"></i></span>
+                <span> > </span>
+                <span><a href="javascript:void(0)">Home</a></span>
+                <span> > </span>
+                <span><a href="javascript:void(0)" class="content-nav-active">属性列表</a></span>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="padding: 0">
+
+                    <div class="attr-list-top col-md-4">属性列表</div>
+                    <div class="attr-item-top  col-md-8">属性信息</div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="panel-body" style="padding: 0">
+
+                    <div  class="attr-list-top col-md-4">
+                        <div class="tree" style="min-height:400px;margin:0 auto;">
+
+                            <ul >
+                                <li><a href="#" ref="kcgl">列表</a></li>
+                                <ul  show="true">
+
+                                    <li><a href="#" ref="hyjm" id="01">PAGE类型</a></li>
+                                    <ul>
+                                        <li><a href="#">服装类</a></li>
+                                        <li><a href="#">饰品类</a></li>
+                                        <li><a href="#">鞋类</a></li>
+                                        <li><a href="#">包类</a></li>
+                                    </ul>
+
+                                    <li><a href="#" ref="xtgl" id="02">粉丝数量</a></li>
+
+                                    <ul>
+
+                                        <li><a href="#" ref="yhgl">A</a></li>
+
+                                        <li><a href="#" ref="rzck">B</a></li>
+
+                                    </ul>
+
+                                    <li><a href="#" ref="ckgl" id="03">PAGE活跃度</a></li>
+                                    <ul>
+                                        <li><a href="#" ref="kcgl">库存管理</a></li>
+                                        <li><a href="#" ref="shgl">收货管理</a></li>
+                                        <li><a href="#" ref="fhgl">发货管理</a></li>
+                                    </ul>
+
+                                    <li><a href="#" ref="ckgl" id="05">佣金比</a></li>
+                                    <ul>
+                                        <li><a href="#" ref="kcgl">5%</a></li>
+                                    </ul>
+
+                                    <li><a href="#" ref="ckgl" id="09">状态</a></li>
+                                    <ul>
+                                        <li><a href="#" ref="kcgl">off</a></li>
+                                    </ul>
+
+                                </ul>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="attr-item-top  col-md-8">
+
+
+                        <div class="search-item col-md-7 col-sm-12" >
+                            <span>*分类名称</span>
+                            <input type="text" class="form-control" id="type-name">
+                        </div>
+
+                        <div class="search-item attr-textarea col-md-7 col-sm-12">
+                            <span>备注</span>
+                            <textarea class="form-control" rows="8"></textarea>
+                            <label  class="control-label">0/100</label>
+                        </div>
+
+
+
+                        <div class="search-item attr-bg-btn col-md-7 col-sm-12">
+                            <a class="btn btn-info">新增该类型</a>
+                            <a class="btn btn-danger">删除该类型</a>
+                        </div>
+
+                        <div class="search-item attr-sm-btn col-md-7 col-sm-12">
+                            <a class="btn btn-success">保存该类型</a>
+                            <a class="btn btn-danger">删除该类型</a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+</body>
+</html>
+<script src="__ADMIN_JS_PATH__/public.js"></script>
+
+

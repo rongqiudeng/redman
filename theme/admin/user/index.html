@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员列表</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+</head>
+<body>
+<div  class="skin-black" >
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+    <!--嵌套视图层-->
+    <div class="right-side">
+        <div >
+            <div class="content-nav col-md-12">
+                <span><i class="fa fa-home"></i></span>
+                <span> > </span>
+                <span><a href="javascript:void(0)">Home</a></span>
+                <span> > </span>
+                <span><a href="javascript:void(0)" class="content-nav-active">管理员列表</a></span>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                         <span class="panel-title">
+                             筛选
+                         </span>
+                    <span class="panel-remove">
+                             <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;清空</a>
+                         </span>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="panel-body">
+
+                    <form action="">
+
+                        <div class="search-item col-md-4 " >
+                            <span>管理员名称</span>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="search-item col-md-4 " >
+                            <span>角色</span>
+                            <select name="" id="" class="form-control m-b-10">
+                                <option value="">管理员</option>
+                                <option value="">高级管理员</option>
+                            </select>
+                        </div>
+                        <div class="search-item col-md-4 ">
+                            <span>状态</span>
+                            <select name="" id="" class="form-control m-b-10">
+                                <option value="">off</option>
+                                <option value="">on</option>
+                            </select>
+                        </div>
+
+
+                        <div class="search-btn col-md-12">
+                            <button type="submit" class="btn btn-default">搜索</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+
+            <div class="panel table-list">
+
+                <div class="panel-heading">
+                 <span class="panel-title">
+                             管理员列表
+                 </span>
+
+                    <span class="panel-remove">
+                             <a href="" data-toggle="modal" data-target="#ModalAdd"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;添加</a>
+                </span>
+                    <div style="clear:both"></div>
+                </div>
+
+
+                <div class="panel-body table-responsive">
+
+                    <table class="table table-hover account-list">
+                        <thead>
+                        <tr>
+                            <th>登录名</th>
+                            <th>邮箱</th>
+                            <th>角色</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>高级管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" checked/><em></em></span>
+                            </td>
+                            <td><a href="personal.html" class="edit-this">编辑</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" /><em></em></span>
+                            </td>
+                            <td><a href=""   class="edit-this">编辑</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" checked /><em></em></span>
+                            </td>
+                            <td><a href=""   class="edit-this">编辑</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>高级管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" checked/><em></em></span>
+                            </td>
+                            <td><a href=""   class="edit-this">编辑</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" /><em></em></span>
+                            </td>
+                            <td><a href=""   class="edit-this">编辑</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" checked /><em></em></span>
+                            </td>
+                            <td><a href=""   class="edit-this">编辑</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>高级管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" checked/><em></em></span>
+                            </td>
+                            <td><a href=""   class="edit-this">编辑</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" /><em></em></span>
+                            </td>
+                            <td><a href=""   class="edit-this">编辑</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>ez702545</td>
+                            <td>ez5@qq.com</td>
+                            <td>管理员</td>
+                            <td>
+                                <span class="switch"><input type="checkbox" checked /><em></em></span>
+                            </td>
+                            <td><a href=""  class="edit-this">编辑</a></td>
+
+                        </tr>
+
+
+
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <ul class="pagination pagination-sm pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!--修改密码弹框-->
+            <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h5 class="modal-title" >
+                                修改密码
+                            </h5>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">*管理员 :</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control"  name="admin" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="oldpad" class="col-sm-4 control-label">*{lanng:pwd} :</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="oldpad" name="oldpassword" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pad" class="col-sm-4 control-label">*确认密码 :</label>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="pad" name="password" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pad" class="col-sm-4 control-label">*性别 :</label>
+                                    <div class="col-sm-6">
+                                        <label class="radio-inline">
+                                            <input  type="radio" name="sex" id="inlineRadio1" value="女"> 女
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input  type="radio" name="sex" id="inlineRadio2" value="男"> 男
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label  class="col-sm-4 control-label">*邮箱 :</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control"  name="email" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label  class="col-sm-4 control-label">*角色 :</label>
+                                    <div class="col-sm-6">
+                                        <select name="" id="" class="form-control m-b-10">
+                                            <option value="">管理员</option>
+                                            <option value="">高级管理员</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" data-dismiss="modal">提交
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>

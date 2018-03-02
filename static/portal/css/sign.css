@@ -1,0 +1,217 @@
+.sign-box{
+    padding-bottom: 70px;
+
+}
+.sign-content{
+    width: 100%;
+    border: 1px solid #d2d2d2;
+}
+.sign-head{
+    padding: 30px 0;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #d2d2d2;
+}
+.sign-head i{
+    font-size: 50px;
+    color: #919191
+}
+.sign-head-text{
+    display: block;
+    margin-top: 18px;
+    color: #4a4c4d;
+    font-size: 16px;
+}
+.sign-form-title{
+    height: 50px;
+    line-height: 50px;
+    padding-left: 80px;
+    font-size: 14px;
+    color: rgba(64, 68, 69, 0.82);
+    border-bottom: 1px solid #d2d2d2;
+}
+.sign-form{
+    color:rgba(64, 68, 69, 0.82);
+    border-bottom: 1px solid #d2d2d2;
+}
+.sign-form ul li{
+    display: block;
+}
+.sign-form-left{
+    display: inline-block;
+    width: 49%;
+    text-align: right;
+    float: left;
+    font-size: 14px;
+}
+.sign-form-right{
+    display: inline-block;
+    width: 49%;
+    text-align: left;
+    margin-left: 2%;
+    float: left;
+}
+
+.sign-form fieldset{
+    border: none;
+    border-top: 1px solid #b5b5b5;
+    text-align: center;
+    width: 40%;
+    margin:auto;
+}
+.sign-form fieldset legend{
+    padding: 0 20px;
+    font-size: 14px;
+    margin: 0 205px
+}
+.sign-facebook{
+    display: block;
+     margin-top:30px;
+}
+.facebook-icon{
+    height: 20px;
+    display: inline-block;
+    float: left;
+    border: none;
+}
+.facebook-sign{
+    float: left;
+    display: inline-block;
+    /*font-size: 12px;*/
+    /*color: #ffffff;*/
+    width: 225px;
+    /*background-color: #0d3d84;*/
+    /*text-align: center;*/
+    height: 40px;
+    /*line-height: 20px;*/
+    text-decoration: none;
+
+}
+.facebook-sign img{
+    display: block;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+.sign-or{
+    margin-top: 20px;
+    margin-bottom:5px;
+}
+.sign-input-text{
+    padding-top: 15px;
+ }
+
+.sign-input{
+    padding: 5px 0;
+}
+.sign-input input{
+    width: 60%;
+    background-color: #ecebeb;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    border: none;
+    outline: none;
+    border-radius:5px;
+}
+.sign-show-text{
+    margin: 30px 0;
+}
+.sign-foot-text{
+    display: block;
+    margin-left: 25%;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: rgba(64, 68, 69, 0.82);
+
+}
+.sign-foot-text span{
+   margin-left: 5px;
+}
+.sign-footer{
+    padding: 35px 0;
+    background-color: #f8f8f8;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #d2d2d2;
+}
+.sign-forgotten{
+    display: inline-block;
+    font-size: 12px;
+    color: #01965e;
+    height: 40px;
+    line-height: 40px;
+    width: 225px;
+}
+.sign-in-btn{
+    width: 225px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #01965e;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 2px;
+}
+.sign-up-btn{
+    display: inline-block;
+    width: 225px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #01965e;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+
+
+
+.account-box .account-input-content{
+    line-height: 40px;
+    font-size: 14px;
+}
+
+.account-close{
+    display: inline-block;
+    width: 225px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 2px;
+    margin: 5px 0.5%;
+}
+.account-saveChange{
+    display: inline-block;
+    width: 225px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #01965e;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 2px;
+    margin: 5px 0.5%;
+}
+
+
+
+
+/*忘记密码 发送邮件*/
+.send-email{
+    padding-bottom: 30px;
+    text-align: center;
+    line-height: 18px;
+    color: rgba(64, 68, 69, 0.82);
+}
+.send-email p{
+    margin: 0;
+    font-size: 12px;
+}
+.send-email p a{
+    color: #01965e;
+}

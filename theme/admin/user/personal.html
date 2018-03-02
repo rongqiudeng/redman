@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin2</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__details.css">
+</head>
+<body>
+<div  class="skin-black" >
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+    <!--嵌套视图层-->
+    <div class="right-side">
+        <div >
+
+            <div class="content-nav col-md-12">
+                <span><i class="fa fa-home"></i></span>
+                <span> > </span>
+                <span><a href="javascript:void(0)">Home</a></span>
+                <span> > </span>
+                <span><a href="javascript:void(0)" class="content-nav-active">个人中心</a></span>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="bg-img">
+
+                    <div class="bg-icon">
+                        <img src="images/touxiang.jpg" alt="">
+                    </div>
+
+                </div>
+
+
+                <div class="personal-box">
+                    <form class="form-horizontal">
+                        <div class="form-group personal-item">
+                            <label for="inputEmail3" class="col-sm-4 control-label">用户名 :</label>
+                            <div class="col-sm-8">
+                                <label for="" class="control-label personal-text">Name</label>
+                                <input type="text" class="form-control personal-input" id="" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group personal-item">
+                            <label  class="col-sm-4 control-label">性别 :</label>
+                            <div class="col-sm-8">
+                                <label for="" class="control-label personal-text-sex">女</label>
+                                <div class="personal-input-sex">
+                                    <label class="radio-inline">
+                                        <input  type="radio" name="sex" id="inlineRadio1" value="女"> 女
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input  type="radio" name="sex" id="inlineRadio2" value="男"> 男
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group personal-item">
+                            <label for="inputEmail3" class="col-sm-4 control-label">电子邮箱 :</label>
+                            <div class="col-sm-8">
+                                <label for="" class="control-label personal-text">xsdfg@163.com</label>
+                                <input type="email" class="form-control personal-input" id="inputEmail3" placeholder="xsdfg@163.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="personal-edit">
+                                <label  class="col-sm-4 control-label">权限 :</label>
+                                <div class="col-sm-8">
+                                    <label class="control-label personal-text-color">高级管理员</label>
+                                </div>
+                            </div>
+                            <div class="personal-btn">
+                                <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#Modalpad">修改密码</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="personal-edit">
+                                <label  class="col-sm-4 control-label">注册时间 :</label>
+                                <div class="col-sm-8">
+                                    <label class="control-label personal-text-color">2017-11-11</label>
+                                </div>
+                            </div>
+
+                            <div class="personal-btn">
+                                <button type="button" class="btn btn-danger" onclick="editUser()">修改信息</button>
+                            </div>
+                            <div class="personal-btn">
+                                <button type="button"  class="btn btn-success" onclick="saveUser()"
+                                        data-toggle="modal" data-target="#myModal">保存信息</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+<!--修改信息成功弹框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h5 class="modal-title" id="myModalLabel">
+                    提示框
+                </h5>
+            </div>
+            <div class="modal-body personal-type">
+                <i class="icon iconfont icon-duihao1"></i><span>修改成功！</span>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-primary" data-dismiss="modal">确认修改-->
+                <!--</button>-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--修改密码弹框-->
+<div class="modal fade" id="Modalpad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h5 class="modal-title" >
+                    修改密码
+                </h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="oldpad" class="col-sm-4 control-label">原密码 :</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="oldpad" name="oldpassword" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="newpad" class="col-sm-4 control-label">新密码 :</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="newpad" name="newpassword" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pad" class="col-sm-4 control-label">确认密码 :</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="pad" name="password" >
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal">确认修改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__BOOTSTRAP__js/bootstrap.min.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>
+<script>
+    $('.personal-input').each(function () {
+        $(this).css('display','none');
+        $('.personal-input-sex').css('display','none');
+    })
+
+    function editUser() {
+
+        if( $('.personal-input').css('display')=='block'){
+            return false;
+        }
+
+        $('.btn-success').css('display','block');
+
+        $('.personal-text').each(function () {
+            $(this).siblings().val($(this).text());
+            $(this).css('display', 'none');
+            $(this).siblings().css('display', 'block');
+        })
+
+        $('.personal-text-sex').css('display', 'none');
+        $('.personal-input-sex').css('display', 'block');
+
+        if ($('.personal-text-sex').text() == '女') {
+            $('#inlineRadio1').attr('checked', true);
+            $('#inlineRadio2').attr('checked', false);
+        } else {
+            $('#inlineRadio2').attr('checked', false);
+            $('#inlineRadio1').attr('checked', true);
+        }
+    }
+
+    function saveUser() {
+
+        if( $('.personal-input').css('display')=='none'){
+            return false;
+        }
+
+        $('.personal-input').each(function () {
+            $(this).siblings().text($(this).val());
+            $(this).css('display', 'none');
+            $(this).siblings().css('display', 'block');
+        })
+
+        $('.personal-text-sex').css('display', 'block');
+        $('.personal-input-sex').css('display', 'none');
+
+        var  sexVal=$('.personal-input-sex input:radio[name="sex"]:checked').val();
+        $('.personal-text-sex').text(sexVal);
+
+    }
+</script>

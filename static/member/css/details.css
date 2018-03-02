@@ -1,0 +1,121 @@
+.bg-img{
+    height: 260px;
+    background-image: url("../images/beijing1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.bg-icon{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 30px;
+    left: 50px;
+}
+.bg-icon img{
+    width: 100%;
+    display: block;
+}
+.bg-id{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: rgba(0,0,0,0.5);
+}
+.bg-id label{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #1ca2ce;
+    margin: 0;
+    margin-left: 50px;
+}
+.bg-user-id{
+    font-size: 13px;
+    color: white;
+    margin-left: 10px;
+}
+.bg-user-id span{
+    margin-left: 10px;
+    color: #1e2324;
+}
+.bg-page-id{
+    font-size: 13px;
+    color: white;
+    margin-left: 30px;
+}
+.bg-page-id span{
+    margin-left: 10px;
+    color: #1e2324;
+}
+
+.page-details-btn{
+    padding: 6px 15px;
+    background-color: black;
+    color: #fff;
+}
+
+
+
+
+.details-box{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.details-list{
+    padding-left: 0;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+
+.details-item{
+    background-color: #fff;
+}
+
+
+.details-icon{
+   text-align: center;
+
+}
+.details-icon i{
+    font-size: 86px;
+}
+
+.details-text{
+    text-align: center;
+}
+.details-text span{
+    display: block;
+    margin: 24px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.details-text select{
+    background-color: #f3f3f4;
+    border: none;
+    color: black;
+}
+.details-text input{
+    background-color: #f3f3f4;
+    border: none;
+    color: black;
+}
+
+
+
+
+@media (max-width: 1300px) {
+
+    .details-icon i{
+        font-size: 66px;
+    }
+    .details-text span{
+        font-size: 13px;
+    }
+
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加PAGE</title>
+    <link rel="stylesheet" href="__BOOTSTRAP__css/bootstrap.min.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/admin/font-icon/iconfont.css">
+    <!--css -->
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__page.css">
+    <link rel="stylesheet" href="__ADMIN_CSS_PATH__details.css">
+</head>
+<body>
+<div class="skin-black">
+    <!--head start-->
+    {include file="head"}
+    <!--head end-->
+    <div class="wrapper">
+        <!--初始展开显示-->
+        <!--menu start-->
+        {include file="menu"}
+        <!--menu end-->
+        <!--嵌套视图层-->
+        <div class="right-side">
+            <div>
+
+                <div class="content-nav col-md-12">
+                    <span><i class="fa fa-home"></i></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)">Home</a></span>
+                    <span> > </span>
+                    <span><a href="javascript:void(0)" class="content-nav-active">PAGE</a></span>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                         <span class="panel-title">
+                             编辑
+                         </span>
+                        <span class="panel-remove">
+                             <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;清空</a>
+                         </span>
+                        <div style="clear:both"></div>
+                    </div>
+
+
+                    <div class="panel-body page-add-box">
+                        <form enctype="multipart/form-data" name="mainform" method="post"
+                              action="{:url('/admin/page/savePageList')}" onSubmit="return Check()">
+                            <div class="page-add-item">
+                                <div class="search-item col-md-4 col-sm-12">
+                                    <span>USER ID</span>
+                                    <input type="text" class="form-control" id="userName" name="userid"
+                                           onfocus="userNameFocus()" onblur="userNameBlur()">
+                                    <div id="userNameId" style="color: #ff0008"></div>
+                                </div>
+                            </div>
+
+                            <div class="page-add-item">
+                                <div class="search-item col-md-4 col-sm-12">
+                                    <span>PAGE ID</span>
+                                    <input type="text" class="form-control" id="pwd" name="pageid" onfocus="pwdFocus()"
+                                           onblur="pwdBlur()"/>
+                                    <div id="pwdId" style="color: #ff0008"></div>
+                                </div>
+                            </div>
+
+                            <div class="page-add-item">
+                                <div class="search-item col-md-4 col-sm-12">
+                                    <span>PAGE类型</span>
+                                    <select name="pagetype" class="form-control m-b-10">
+                                        {foreach $pagetype as $vo}
+                                        <option value="{$vo.name}">{$vo.name}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+
+                                <div class="search-item col-md-4 col-sm-12">
+                                    <span>佣金比</span>
+                                    <select name="yongjin" class="form-control m-b-10">
+                                        {foreach $yongjin as $vo}
+                                        <option value="{$vo.status}">{$vo.value}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="page-add-item">
+                                <div class="search-item col-md-4 col-sm-12">
+                                    <span>粉丝数量</span>
+                                    <select name="fans" class="form-control m-b-10">
+                                        {foreach $fans as $vo}
+                                        <option value="{$vo.status}">{$vo.value}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+
+                                <div class="search-item col-md-4 col-sm-12">
+                                    <span>状态</span>
+                                    <select name="status" class="form-control m-b-10">
+                                        <{foreach $stutus as $vo}
+                                        <option value="{$vo.status}">{$vo.value}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="page-add-item">
+
+                                <div class="search-item col-md-4 col-sm-12">
+                                    <span>PAGE活跃度</span>
+                                    <select name="huoyuedu" class="form-control m-b-10">
+                                        {foreach $pageactivity as $vo}
+                                        <option value="{$vo.status}">{$vo.value}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="page-add-item">
+
+                                <div class="search-item col-md-4 col-sm-12">
+                                    <span>备注</span>
+                                    <textarea class="form-control" rows="8" name="beizhu"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="page-add-item">
+
+                                <div class="search-item col-md-8 col-sm-12">
+                                    <button type="submit" class="btn btn-primary">发布</button>
+                                </div>
+
+                                <div style="clear: both;"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+<script src="__JQUERY__jquery-2.1.4.min.js"></script>
+<script src="__ADMIN_JS_PATH__/public.js"></script>
+<script>
+    /*当鼠标放在通行证用户名文本框时，提示文本及样式*/
+    function userNameFocus() {
+        var userNameId = document.getElementById("userNameId");
+        userNameId.innerHTML = "1、由字母、数字、下划线、点、减号组成<br/>2、只能以数字、字母开头或结尾，且长度为4-18";
+    }
+
+    /*当鼠标离开通行证用户名文本框时，提示文本及样式*/
+    function userNameBlur() {
+        var userName = document.getElementById("userName");
+        var userNameId = document.getElementById("userNameId");
+        var reg = /^[0-9a-zA-Z][0-9a-zA-Z_.-]{2,16}[0-9a-zA-Z]$/;
+        if (userName.value == "") {
+            userNameId.style.color = "red";
+            userNameId.innerHTML = "UserID不能为空";
+            return false;
+        }
+        if (reg.test(userName.value) == false) {
+            userNameId.style.color = "red";
+            userNameId.innerHTML = "1、由字母、数字、下划线、点、减号组成<br/>2、只能以数字、字母开头或结尾，且长度为4-18";
+            return false;
+        }
+        userNameId.style.color = "green";
+        userNameId.innerHTML = "UserID格式输入正确";
+        return true;
+    }
+
+    /*当鼠标放在密码文本框时，提示文本及样式*/
+    function pwdFocus() {
+        var pwdId = document.getElementById("pwdId");
+        pwdId.innerHTML = "PageID长度为6-16";
+    }
+
+    /*当鼠标离开密码文本框时，提示文本及样式*/
+    function pwdBlur() {
+        var pwd = document.getElementById("pwd")
+        var pwdId = document.getElementById("pwdId")
+        if (pwd.value == "") {
+            pwdId.style.color = "red";
+            pwdId.innerHTML = "PageID不能为空";
+            return false;
+        }
+        if (pwd.value.length < 6 || pwd.value.length > 16) {
+            pwdId.style.color = "red";
+            pwdId.innerHTML = "PageID长度为6-16";
+            return false;
+        }
+        pwdId.style.color = "green";
+        pwdId.innerHTML = "PageID格式输入正确";
+        return true;
+    }
+
+    function Check() {
+        var flagUserName = userNameBlur();
+        var flagPwd = pwdBlur();
+        userNameBlur();
+        pwdBlur();
+        if (flagUserName == true && flagPwd == true ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
